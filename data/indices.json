@@ -1,0 +1,908 @@
+[
+  {
+    "id": "mpo713k76n3tow",
+    "name": "CUB/SC",
+    "kind": "CUB/SC",
+    "entries": [
+      {
+        "id": "mpo713k6e352iz",
+        "monthYear": "2013-12",
+        "value": 1309.57
+      },
+      {
+        "id": "mpo713k6j0n085",
+        "monthYear": "2014-01",
+        "value": 1314.05,
+        "variation": 0.0034209702421406085
+      },
+      {
+        "id": "mpo713k6qw9wts",
+        "monthYear": "2014-02",
+        "value": 1318.88,
+        "variation": 0.0036756592214908235
+      },
+      {
+        "id": "mpo713k62rwsod",
+        "monthYear": "2014-03",
+        "value": 1325.89,
+        "variation": 0.005315115855877739
+      },
+      {
+        "id": "mpo713k6379dtp",
+        "monthYear": "2014-04",
+        "value": 1330.61,
+        "variation": 0.003559872990972046
+      },
+      {
+        "id": "mpo713k6iddd91",
+        "monthYear": "2014-05",
+        "value": 1334.42,
+        "variation": 0.002863348389084752
+      },
+      {
+        "id": "mpo713k6wgqjv6",
+        "monthYear": "2014-06",
+        "value": 1371.44,
+        "variation": 0.027742389952188917
+      },
+      {
+        "id": "mpo713k6u68v4x",
+        "monthYear": "2014-07",
+        "value": 1408.59,
+        "variation": 0.02708831593070049
+      },
+      {
+        "id": "mpo713k6law7x7",
+        "monthYear": "2014-08",
+        "value": 1411.72,
+        "variation": 0.0022220802362646896
+      },
+      {
+        "id": "mpo713k6cq3rn9",
+        "monthYear": "2014-09",
+        "value": 1414.81,
+        "variation": 0.0021888193126116118
+      },
+      {
+        "id": "mpo713k6mcxzo9",
+        "monthYear": "2014-10",
+        "value": 1417.82,
+        "variation": 0.0021274941511582046
+      },
+      {
+        "id": "mpo713k64nny24",
+        "monthYear": "2014-11",
+        "value": 1420.57,
+        "variation": 0.0019395974101084068
+      },
+      {
+        "id": "mpo713k656ab7y",
+        "monthYear": "2014-12",
+        "value": 1422.63,
+        "variation": 0.0014501221340730286
+      },
+      {
+        "id": "mpo713k6869x78",
+        "monthYear": "2015-01",
+        "value": 1425.91,
+        "variation": 0.0023055889444199007
+      },
+      {
+        "id": "mpo713k6novmti",
+        "monthYear": "2015-02",
+        "value": 1430.39,
+        "variation": 0.003141853272647044
+      },
+      {
+        "id": "mpo713k60mmhse",
+        "monthYear": "2015-03",
+        "value": 1433.13,
+        "variation": 0.0019155614902228724
+      },
+      {
+        "id": "mpo713k6rfnpz4",
+        "monthYear": "2015-04",
+        "value": 1442.14,
+        "variation": 0.00628693837963068
+      },
+      {
+        "id": "mpo713k6x7yd70",
+        "monthYear": "2015-05",
+        "value": 1449.85,
+        "variation": 0.005346221587363198
+      },
+      {
+        "id": "mpo713k6iu89x6",
+        "monthYear": "2015-06",
+        "value": 1510.35,
+        "variation": 0.041728454667724346
+      },
+      {
+        "id": "mpo713k68ftk65",
+        "monthYear": "2015-07",
+        "value": 1523.76,
+        "variation": 0.008878736716655178
+      },
+      {
+        "id": "mpo713k6o14y7l",
+        "monthYear": "2015-08",
+        "value": 1526.37,
+        "variation": 0.0017128681682154756
+      },
+      {
+        "id": "mpo713k7r7jihq",
+        "monthYear": "2015-09",
+        "value": 1535.87,
+        "variation": 0.006223916874676494
+      },
+      {
+        "id": "mpo713k7fpto31",
+        "monthYear": "2015-10",
+        "value": 1542.3,
+        "variation": 0.004186552247260611
+      },
+      {
+        "id": "mpo713k7wsf7b9",
+        "monthYear": "2015-11",
+        "value": 1545.41,
+        "variation": 0.0020164689100694577
+      },
+      {
+        "id": "mpo713k7ijibiq",
+        "monthYear": "2015-12",
+        "value": 1552.9,
+        "variation": 0.004846610284649389
+      },
+      {
+        "id": "mpo713k73h8myf",
+        "monthYear": "2016-01",
+        "value": 1555.98,
+        "variation": 0.001983385923111536
+      },
+      {
+        "id": "mpo713k7rdb4iv",
+        "monthYear": "2016-02",
+        "value": 1558.16,
+        "variation": 0.0014010462859419537
+      },
+      {
+        "id": "mpo713k746rb4h",
+        "monthYear": "2016-03",
+        "value": 1561.56,
+        "variation": 0.0021820608923344142
+      },
+      {
+        "id": "mpo713k7n1i0ln",
+        "monthYear": "2016-04",
+        "value": 1562.99,
+        "variation": 0.0009157509157509125
+      },
+      {
+        "id": "mpo713k7ac9oy7",
+        "monthYear": "2016-05",
+        "value": 1565.77,
+        "variation": 0.0017786422178005523
+      },
+      {
+        "id": "mpo713k7a648ow",
+        "monthYear": "2016-06",
+        "value": 1613.43,
+        "variation": 0.030438697893049538
+      },
+      {
+        "id": "mpo713k70ap0mw",
+        "monthYear": "2016-07",
+        "value": 1629.31,
+        "variation": 0.009842385476903193
+      },
+      {
+        "id": "mpo713k7gti3xg",
+        "monthYear": "2016-08",
+        "value": 1631.74,
+        "variation": 0.0014914288870748749
+      },
+      {
+        "id": "mpo713k70j7p6e",
+        "monthYear": "2016-09",
+        "value": 1634.28,
+        "variation": 0.0015566205400370237
+      },
+      {
+        "id": "mpo713k7dg14k1",
+        "monthYear": "2016-10",
+        "value": 1636.64,
+        "variation": 0.001444060993220253
+      },
+      {
+        "id": "mpo713k7jbf731",
+        "monthYear": "2016-11",
+        "value": 1639.37,
+        "variation": 0.001668051617948807
+      },
+      {
+        "id": "mpo713k762tsnx",
+        "monthYear": "2016-12",
+        "value": 1644.49,
+        "variation": 0.0031231509665299306
+      },
+      {
+        "id": "mpo713k79zph69",
+        "monthYear": "2017-01",
+        "value": 1646.19,
+        "variation": 0.0010337551459722594
+      },
+      {
+        "id": "mpo713k799htbb",
+        "monthYear": "2017-02",
+        "value": 1650.73,
+        "variation": 0.0027578833548982384
+      },
+      {
+        "id": "mpo713k7r52rz6",
+        "monthYear": "2017-03",
+        "value": 1652.81,
+        "variation": 0.0012600485845655207
+      },
+      {
+        "id": "mpo713k7kz0pg8",
+        "monthYear": "2017-04",
+        "value": 1655.17,
+        "variation": 0.0014278713221727024
+      },
+      {
+        "id": "mpo713k7sj8tod",
+        "monthYear": "2017-05",
+        "value": 1657.02,
+        "variation": 0.0011177099633270515
+      },
+      {
+        "id": "mpo713k7kuzdw4",
+        "monthYear": "2017-06",
+        "value": 1697,
+        "variation": 0.024127650843079662
+      },
+      {
+        "id": "mpo713k7a3lehv",
+        "monthYear": "2017-07",
+        "value": 1720.12,
+        "variation": 0.013624042427813787
+      },
+      {
+        "id": "mpo713k71sdooi",
+        "monthYear": "2017-08",
+        "value": 1730.33,
+        "variation": 0.005935632397739754
+      },
+      {
+        "id": "mpo713k7xxqyt6",
+        "monthYear": "2017-09",
+        "value": 1731.72,
+        "variation": 0.0008033149746002888
+      },
+      {
+        "id": "mpo713k7sckxnj",
+        "monthYear": "2017-10",
+        "value": 1736.01,
+        "variation": 0.002477305800013818
+      },
+      {
+        "id": "mpo713k7nptlkh",
+        "monthYear": "2017-11",
+        "value": 1739.92,
+        "variation": 0.002252291173437948
+      },
+      {
+        "id": "mpo713k7uj3l4n",
+        "monthYear": "2017-12",
+        "value": 1744.2,
+        "variation": 0.0024598832130213744
+      },
+      {
+        "id": "mpo713k7v753gn",
+        "monthYear": "2018-01",
+        "value": 1747.12,
+        "variation": 0.0016741199403738083
+      },
+      {
+        "id": "mpo713k7z7twtn",
+        "monthYear": "2018-02",
+        "value": 1749.71,
+        "variation": 0.0014824396721462296
+      },
+      {
+        "id": "mpo713k78z6078",
+        "monthYear": "2018-03",
+        "value": 1753.61,
+        "variation": 0.0022289407959033003
+      },
+      {
+        "id": "mpo713k78urtr7",
+        "monthYear": "2018-04",
+        "value": 1759.56,
+        "variation": 0.0033930007242204407
+      },
+      {
+        "id": "mpo713k7napswk",
+        "monthYear": "2018-05",
+        "value": 1763.61,
+        "variation": 0.0023017117915842267
+      },
+      {
+        "id": "mpo713k7b6z7t7",
+        "monthYear": "2018-06",
+        "value": 1772.27,
+        "variation": 0.004910382680978209
+      },
+      {
+        "id": "mpo713k7bp9jx4",
+        "monthYear": "2018-07",
+        "value": 1797.94,
+        "variation": 0.014484249013976491
+      },
+      {
+        "id": "mpo713k7d9r2zv",
+        "monthYear": "2018-08",
+        "value": 1805.05,
+        "variation": 0.003954525735007763
+      },
+      {
+        "id": "mpo713k7imwssp",
+        "monthYear": "2018-09",
+        "value": 1817.09,
+        "variation": 0.0066701753414033504
+      },
+      {
+        "id": "mpo713k7ww6s79",
+        "monthYear": "2018-10",
+        "value": 1821.41,
+        "variation": 0.0023774276453010224
+      },
+      {
+        "id": "mpo713k75ewhjw",
+        "monthYear": "2018-11",
+        "value": 1825.53,
+        "variation": 0.002261983847678284
+      },
+      {
+        "id": "mpo713k71e1j3q",
+        "monthYear": "2018-12",
+        "value": 1828.25,
+        "variation": 0.0014899782528909888
+      },
+      {
+        "id": "mpo713k7uac363",
+        "monthYear": "2019-01",
+        "value": 1832.98,
+        "variation": 0.0025871735265965423
+      },
+      {
+        "id": "mpo713k7i2skcu",
+        "monthYear": "2019-02",
+        "value": 1836.4,
+        "variation": 0.001865814138724886
+      },
+      {
+        "id": "mpo713k7wscub5",
+        "monthYear": "2019-03",
+        "value": 1844.09,
+        "variation": 0.004187540840775439
+      },
+      {
+        "id": "mpo713k7rrjc4i",
+        "monthYear": "2019-04",
+        "value": 1848.59,
+        "variation": 0.0024402279715198816
+      },
+      {
+        "id": "mpo713k7i9ik4b",
+        "monthYear": "2019-05",
+        "value": 1851.79,
+        "variation": 0.0017310490698316805
+      },
+      {
+        "id": "mpo713k7tznma0",
+        "monthYear": "2019-06",
+        "value": 1877.87,
+        "variation": 0.014083670394591241
+      },
+      {
+        "id": "mpo713k7sum0or",
+        "monthYear": "2019-07",
+        "value": 1897.11,
+        "variation": 0.010245650657393801
+      },
+      {
+        "id": "mpo713k7j0fcrq",
+        "monthYear": "2019-08",
+        "value": 1904.59,
+        "variation": 0.003942839371465112
+      },
+      {
+        "id": "mpo713k7dla7ms",
+        "monthYear": "2019-09",
+        "value": 1911.08,
+        "variation": 0.00340755753206734
+      },
+      {
+        "id": "mpo713k7f6li34",
+        "monthYear": "2019-10",
+        "value": 1914.6,
+        "variation": 0.0018418904493793242
+      },
+      {
+        "id": "mpo713k7dyjc95",
+        "monthYear": "2019-11",
+        "value": 1917.81,
+        "variation": 0.0016765904105295881
+      },
+      {
+        "id": "mpo713k7r7yg6r",
+        "monthYear": "2019-12",
+        "value": 1930.32,
+        "variation": 0.006523065371439207
+      },
+      {
+        "id": "mpo713k7a5l7di",
+        "monthYear": "2020-01",
+        "value": 1933.84,
+        "variation": 0.0018235318496415687
+      },
+      {
+        "id": "mpo713k7v6ql7d",
+        "monthYear": "2020-02",
+        "value": 1942.41,
+        "variation": 0.00443159723658626
+      },
+      {
+        "id": "mpo713k7e2pp2e",
+        "monthYear": "2020-03",
+        "value": 1945.43,
+        "variation": 0.0015547695903541658
+      },
+      {
+        "id": "mpo713k78rd3a5",
+        "monthYear": "2020-04",
+        "value": 1948.4,
+        "variation": 0.0015266547755510285
+      },
+      {
+        "id": "mpo713k72m3h00",
+        "monthYear": "2020-05",
+        "value": 1952.55,
+        "variation": 0.0021299527817695285
+      },
+      {
+        "id": "mpo713k7lr1dxk",
+        "monthYear": "2020-06",
+        "value": 1962,
+        "variation": 0.004839824844434126
+      },
+      {
+        "id": "mpo713k7jy8nvl",
+        "monthYear": "2020-07",
+        "value": 1970.24,
+        "variation": 0.004199796126401534
+      },
+      {
+        "id": "mpo713k7qyxqkt",
+        "monthYear": "2020-08",
+        "value": 1974.3,
+        "variation": 0.002060662660386514
+      },
+      {
+        "id": "mpo713k7uoftkl",
+        "monthYear": "2020-09",
+        "value": 1980.53,
+        "variation": 0.003155548802107111
+      },
+      {
+        "id": "mpo713k7hyaz55",
+        "monthYear": "2020-10",
+        "value": 2007.57,
+        "variation": 0.013652911089455877
+      },
+      {
+        "id": "mpo713k70vy9ms",
+        "monthYear": "2020-11",
+        "value": 2022.93,
+        "variation": 0.007651040810532139
+      },
+      {
+        "id": "mpo713k7eccslc",
+        "monthYear": "2020-12",
+        "value": 2044.16,
+        "variation": 0.010494678510872824
+      },
+      {
+        "id": "mpo713k76nte08",
+        "monthYear": "2021-01",
+        "value": 2097.92,
+        "variation": 0.02629931120851592
+      },
+      {
+        "id": "mpo713k72v3dkh",
+        "monthYear": "2021-02",
+        "value": 2112.9,
+        "variation": 0.007140405735204469
+      },
+      {
+        "id": "mpo713k7ky3xn2",
+        "monthYear": "2021-03",
+        "value": 2140.56,
+        "variation": 0.013091012352690612
+      },
+      {
+        "id": "mpo713k7euyky6",
+        "monthYear": "2021-04",
+        "value": 2171.33,
+        "variation": 0.014374743057891326
+      },
+      {
+        "id": "mpo713k7y1ulve",
+        "monthYear": "2021-05",
+        "value": 2203.29,
+        "variation": 0.01471908922181342
+      },
+      {
+        "id": "mpo713k7jyyj51",
+        "monthYear": "2021-06",
+        "value": 2253.79,
+        "variation": 0.022920269233736912
+      },
+      {
+        "id": "mpo713k7i7lfat",
+        "monthYear": "2021-07",
+        "value": 2307.92,
+        "variation": 0.02401732193327688
+      },
+      {
+        "id": "mpo713k7q76c0b",
+        "monthYear": "2021-08",
+        "value": 2329.85,
+        "variation": 0.009502062463170313
+      },
+      {
+        "id": "mpo713k78n4wlo",
+        "monthYear": "2021-09",
+        "value": 2357.91,
+        "variation": 0.01204369380003012
+      },
+      {
+        "id": "mpo713k7c3k91c",
+        "monthYear": "2021-10",
+        "value": 2381.05,
+        "variation": 0.009813775759041077
+      },
+      {
+        "id": "mpo713k7at78qj",
+        "monthYear": "2021-11",
+        "value": 2403.54,
+        "variation": 0.009445412738077641
+      },
+      {
+        "id": "mpo713k7zvbxr7",
+        "monthYear": "2021-12",
+        "value": 2415.45,
+        "variation": 0.004955191093137579
+      },
+      {
+        "id": "mpo713k7i2ekcs",
+        "monthYear": "2022-01",
+        "value": 2428.1,
+        "variation": 0.005237119377341726
+      },
+      {
+        "id": "mpo713k7fam6gs",
+        "monthYear": "2022-02",
+        "value": 2438.51,
+        "variation": 0.004287302829372841
+      },
+      {
+        "id": "mpo713k77x14lr",
+        "monthYear": "2022-03",
+        "value": 2444.3,
+        "variation": 0.0023744007611206097
+      },
+      {
+        "id": "mpo713k7fb78cl",
+        "monthYear": "2022-04",
+        "value": 2461.35,
+        "variation": 0.006975412183447105
+      },
+      {
+        "id": "mpo713k76zg080",
+        "monthYear": "2022-05",
+        "value": 2470.83,
+        "variation": 0.003851544883905156
+      },
+      {
+        "id": "mpo713k77y04jd",
+        "monthYear": "2022-06",
+        "value": 2544.17,
+        "variation": 0.02968233346689164
+      },
+      {
+        "id": "mpo713k7mumdzf",
+        "monthYear": "2022-07",
+        "value": 2572.55,
+        "variation": 0.011154914962443696
+      },
+      {
+        "id": "mpo713k7zoyljm",
+        "monthYear": "2022-08",
+        "value": 2603.14,
+        "variation": 0.01189092534644609
+      },
+      {
+        "id": "mpo713k70t50v4",
+        "monthYear": "2022-09",
+        "value": 2623.42,
+        "variation": 0.007790591362738963
+      },
+      {
+        "id": "mpo713k7pu9s2e",
+        "monthYear": "2022-10",
+        "value": 2632.38,
+        "variation": 0.003415389072279673
+      },
+      {
+        "id": "mpo713k7v84puw",
+        "monthYear": "2022-11",
+        "value": 2633.22,
+        "variation": 0.0003191028650877392
+      },
+      {
+        "id": "mpo713k79jwd4b",
+        "monthYear": "2022-12",
+        "value": 2643.16,
+        "variation": 0.00377484600603073
+      },
+      {
+        "id": "mpo713k7ltgpc9",
+        "monthYear": "2023-01",
+        "value": 2651.17,
+        "variation": 0.0030304635360705046
+      },
+      {
+        "id": "mpo713k7p473kn",
+        "monthYear": "2023-02",
+        "value": 2662.47,
+        "variation": 0.004262269111373396
+      },
+      {
+        "id": "mpo713k7pqljcx",
+        "monthYear": "2023-03",
+        "value": 2671.09,
+        "variation": 0.0032375951653915713
+      },
+      {
+        "id": "mpo713k7sfn3g4",
+        "monthYear": "2023-04",
+        "value": 2680.84,
+        "variation": 0.0036501952386478465
+      },
+      {
+        "id": "mpo713k7dz24cx",
+        "monthYear": "2023-05",
+        "value": 2688.94,
+        "variation": 0.003021441040867767
+      },
+      {
+        "id": "mpo713k7xo4ygy",
+        "monthYear": "2023-06",
+        "value": 2725.79,
+        "variation": 0.013704284959872526
+      },
+      {
+        "id": "mpo713k7ayarwr",
+        "monthYear": "2023-07",
+        "value": 2747.9,
+        "variation": 0.008111409903184041
+      },
+      {
+        "id": "mpo713k7qbilfj",
+        "monthYear": "2023-08",
+        "value": 2750.52,
+        "variation": 0.0009534553659158451
+      },
+      {
+        "id": "mpo713k7j1ew6e",
+        "monthYear": "2023-09",
+        "value": 2752.32,
+        "variation": 0.0006544217093495952
+      },
+      {
+        "id": "mpo713k73jp233",
+        "monthYear": "2023-10",
+        "value": 2754.77,
+        "variation": 0.0008901581211486764
+      },
+      {
+        "id": "mpo713k7eqazr6",
+        "monthYear": "2023-11",
+        "value": 2754.98,
+        "variation": 0.00007623140951884544
+      },
+      {
+        "id": "mpo713k7cuepqz",
+        "monthYear": "2023-12",
+        "value": 2752.67,
+        "variation": -0.0008384815860732475
+      },
+      {
+        "id": "mpo713k7q5kf82",
+        "monthYear": "2024-01",
+        "value": 2752.28,
+        "variation": -0.00014168062281338933
+      },
+      {
+        "id": "mpo713k7rm5mez",
+        "monthYear": "2024-02",
+        "value": 2753.62,
+        "variation": 0.0004868690685539967
+      },
+      {
+        "id": "mpo713k7pog21p",
+        "monthYear": "2024-03",
+        "value": 2755.41,
+        "variation": 0.0006500533842723755
+      },
+      {
+        "id": "mpo713k7ute2re",
+        "monthYear": "2024-04",
+        "value": 2757.56,
+        "variation": 0.0007802831520535847
+      },
+      {
+        "id": "mpo713k7ctgr6g",
+        "monthYear": "2024-05",
+        "value": 2758.46,
+        "variation": 0.0003263754913764849
+      },
+      {
+        "id": "mpo713k7zs1voi",
+        "monthYear": "2024-06",
+        "value": 2774.29,
+        "variation": 0.005738709279815568
+      },
+      {
+        "id": "mpo713k7q7xezo",
+        "monthYear": "2024-07",
+        "value": 2793.27,
+        "variation": 0.00684139004934603
+      },
+      {
+        "id": "mpo713k7akh3dy",
+        "monthYear": "2024-08",
+        "value": 2811.86,
+        "variation": 0.006655282160335396
+      },
+      {
+        "id": "mpo713k74exl2h",
+        "monthYear": "2024-09",
+        "value": 2841.51,
+        "variation": 0.010544621709473567
+      },
+      {
+        "id": "mpo713k72yj8z4",
+        "monthYear": "2024-10",
+        "value": 2846.12,
+        "variation": 0.0016223768348517797
+      },
+      {
+        "id": "mpo713k7txio7o",
+        "monthYear": "2024-11",
+        "value": 2863.73,
+        "variation": 0.006187370876842957
+      },
+      {
+        "id": "mpo713k7drgdy1",
+        "monthYear": "2024-12",
+        "value": 2868.56,
+        "variation": 0.0016866115171472185
+      },
+      {
+        "id": "mpo713k78pm5iz",
+        "monthYear": "2025-01",
+        "value": 2887.91,
+        "variation": 0.006745544802967407
+      },
+      {
+        "id": "mpo713k7hzzn7o",
+        "monthYear": "2025-02",
+        "value": 2901.09,
+        "variation": 0.004563854136728773
+      },
+      {
+        "id": "mpo713k78hmf1a",
+        "monthYear": "2025-03",
+        "value": 2907.85,
+        "variation": 0.0023301586645019245
+      },
+      {
+        "id": "mpo713k72rw22p",
+        "monthYear": "2025-04",
+        "value": 2916.12,
+        "variation": 0.0028440256546933274
+      },
+      {
+        "id": "mpo713k73rl1fg",
+        "monthYear": "2025-05",
+        "value": 2923.52,
+        "variation": 0.0025376184793493017
+      },
+      {
+        "id": "mpo713k73twtlq",
+        "monthYear": "2025-06",
+        "value": 2934.53,
+        "variation": 0.003766008099824969
+      },
+      {
+        "id": "mpo713k7b12whi",
+        "monthYear": "2025-07",
+        "value": 2965.54,
+        "variation": 0.010567279939206475
+      },
+      {
+        "id": "mpo713k7r44eqq",
+        "monthYear": "2025-08",
+        "value": 2978.02,
+        "variation": 0.004208339796462068
+      },
+      {
+        "id": "mpo713k7es19gz",
+        "monthYear": "2025-09",
+        "value": 2993.04,
+        "variation": 0.005043619586168058
+      },
+      {
+        "id": "mpo713k7crfmk2",
+        "monthYear": "2025-10",
+        "value": 2999.38,
+        "variation": 0.002118247667922901
+      },
+      {
+        "id": "mpo713k7zfn374",
+        "monthYear": "2025-11",
+        "value": 3003.02,
+        "variation": 0.001213584140722368
+      },
+      {
+        "id": "mpo713k7qj9y6e",
+        "monthYear": "2025-12",
+        "value": 3008.84,
+        "variation": 0.0019380490306424303
+      },
+      {
+        "id": "mpo713k74tt1qj",
+        "monthYear": "2026-01",
+        "value": 3012.64,
+        "variation": 0.0012629451881787102
+      },
+      {
+        "id": "mpo713k7ts7kxv",
+        "monthYear": "2026-02",
+        "value": 3019.26,
+        "variation": 0.0021974082532265626
+      },
+      {
+        "id": "mpo713k74vb780",
+        "monthYear": "2026-03",
+        "value": 3028.45,
+        "variation": 0.0030437921874895135
+      },
+      {
+        "id": "mpo713k7u0uuy5",
+        "monthYear": "2026-04",
+        "value": 3037.72,
+        "variation": 0.003060971784246025
+      },
+      {
+        "id": "mpo713k72h5fp0",
+        "monthYear": "2026-05",
+        "value": 3064.1,
+        "variation": 0.008684144687463036
+      }
+    ]
+  }
+]
