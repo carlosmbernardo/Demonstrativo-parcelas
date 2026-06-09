@@ -67,9 +67,9 @@ export interface Contract {
   /** Como tratar variações negativas (apenas correctionMode === "index"). */
   negativeIndexMode?: NegativeIndexMode;
   /** Multa em fração decimal (ex.: 0.02 = 2%). */
-  finePercent: number;
+  finePercent?: number;
   /** Juros mensais em fração decimal (ex.: 0.01 = 1%/mês). */
-  monthlyInterestPercent: number;
+  monthlyInterestPercent?: number;
   /** Data limite do cálculo ISO "YYYY-MM-DD". */
   finalDate: string;
   payments: Payment[];

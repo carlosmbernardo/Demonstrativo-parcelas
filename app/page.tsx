@@ -24,8 +24,8 @@ function emptyContract(): Partial<Contract> {
     vencimento: "",
     originalValue: 0,
     correctionMode: "none",
-    finePercent: 0.02,
-    monthlyInterestPercent: 0.01,
+    finePercent: undefined,
+    monthlyInterestPercent: undefined,
     finalDate: "",
     payments: [],
   };

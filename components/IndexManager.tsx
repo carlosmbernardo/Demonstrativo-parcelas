@@ -255,7 +255,7 @@ export default function IndexManager({ indices, onChange }: Props) {
                   </thead>
                   <tbody>
                     {[...selected.entries]
-                      .sort((a, b) => a.monthYear.localeCompare(b.monthYear))
+                      .sort((a, b) => b.monthYear.localeCompare(a.monthYear))
                       .map((e) => (
                         <tr key={e.id} className="border-t border-slate-100">
                           <td className="px-2 py-1.5">

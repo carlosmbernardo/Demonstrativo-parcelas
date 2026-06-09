@@ -135,7 +135,7 @@ export default function ContractForm({ contract, indices, errors, onChange }: Pr
       {/* Multa e juros */}
       <div className="grid grid-cols-2 gap-4">
         <div>
-          <label className="label">Multa (%)</label>
+          <label className="label">Multa (%) <span className="text-slate-400 font-normal">(opcional)</span></label>
           <input
             type="number"
             step="0.01"
@@ -143,13 +143,18 @@ export default function ContractForm({ contract, indices, errors, onChange }: Pr
             placeholder="ex.: 2"
             value={pct(contract.finePercent)}
             onChange={(e) =>
-              onChange({ finePercent: (parseFloat(e.target.value) || 0) / 100 })
+              onChange({
+                finePercent:
+                  e.target.value.trim() === ""
+                    ? undefined
+                    : (parseFloat(e.target.value) || 0) / 100,
+              })
             }
           />
           {errors.finePercent && <p className="error">{errors.finePercent}</p>}
         </div>
         <div>
-          <label className="label">Juros mensal (%)</label>
+          <label className="label">Juros mensal (%) <span className="text-slate-400 font-normal">(opcional)</span></label>
           <input
             type="number"
             step="0.01"
@@ -158,7 +163,10 @@ export default function ContractForm({ contract, indices, errors, onChange }: Pr
             value={pct(contract.monthlyInterestPercent)}
             onChange={(e) =>
               onChange({
-                monthlyInterestPercent: (parseFloat(e.target.value) || 0) / 100,
+                monthlyInterestPercent:
+                  e.target.value.trim() === ""
+                    ? undefined
+                    : (parseFloat(e.target.value) || 0) / 100,
               })
             }
           />

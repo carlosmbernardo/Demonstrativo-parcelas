@@ -274,33 +274,43 @@ function planTickets(c: Contract): EventTicket[] {
 
   // 3) Se o vencimento entra na janela do cálculo, processa eventos pós-venc.
   if (c.vencimento && beforeOrEq(c.vencimento, c.finalDate)) {
-    tickets.push({
-      date: c.vencimento,
-      type: "Vencimento",
-      order: TYPE_ORDER.Vencimento,
-    });
+    const hasFine = c.finePercent != null && c.finePercent > 0;
+    const hasInterest = c.monthlyInterestPercent != null && c.monthlyInterestPercent > 0;
+
+    // Vencimento é exibido apenas se houver multa ou juros após ele
+    if (hasFine || hasInterest) {
+      tickets.push({
+        date: c.vencimento,
+        type: "Vencimento",
+        order: TYPE_ORDER.Vencimento,
+      });
+    }
 
     // Multa: dia seguinte (clamp pela data final).
-    const multaDate = addDays(c.vencimento, 1);
-    if (beforeOrEq(multaDate, c.finalDate)) {
-      tickets.push({ date: multaDate, type: "Multa", order: TYPE_ORDER.Multa });
-    }
-
-    // Juros no último dia de cada mês após vencimento.
-    let jurosCursor = endOfMonth(c.vencimento);
-    while (beforeOrEq(jurosCursor, c.finalDate)) {
-      // Só emite se for estritamente após o vencimento.
-      if (before(c.vencimento, jurosCursor)) {
-        tickets.push({ date: jurosCursor, type: "Juros", order: TYPE_ORDER.Juros });
+    if (hasFine) {
+      const multaDate = addDays(c.vencimento, 1);
+      if (beforeOrEq(multaDate, c.finalDate)) {
+        tickets.push({ date: multaDate, type: "Multa", order: TYPE_ORDER.Multa });
       }
-      jurosCursor = endOfMonth(addDays(jurosCursor, 1));
     }
 
-    // Juros parcial na data final, se ela cair no meio de um mês
-    // (ainda não coberta por um juros de fim de mês).
-    const finalIsEndOfMonth = c.finalDate === endOfMonth(c.finalDate);
-    if (!finalIsEndOfMonth && before(c.vencimento, c.finalDate)) {
-      tickets.push({ date: c.finalDate, type: "Juros", order: TYPE_ORDER.Juros });
+    if (hasInterest) {
+      // Juros no último dia de cada mês após vencimento.
+      let jurosCursor = endOfMonth(c.vencimento);
+      while (beforeOrEq(jurosCursor, c.finalDate)) {
+        // Só emite se for estritamente após o vencimento.
+        if (before(c.vencimento, jurosCursor)) {
+          tickets.push({ date: jurosCursor, type: "Juros", order: TYPE_ORDER.Juros });
+        }
+        jurosCursor = endOfMonth(addDays(jurosCursor, 1));
+      }
+
+      // Juros parcial na data final, se ela cair no meio de um mês
+      // (ainda não coberta por um juros de fim de mês).
+      const finalIsEndOfMonth = c.finalDate === endOfMonth(c.finalDate);
+      if (!finalIsEndOfMonth && before(c.vencimento, c.finalDate)) {
+        tickets.push({ date: c.finalDate, type: "Juros", order: TYPE_ORDER.Juros });
+      }
     }
   }
 
@@ -308,6 +318,8 @@ function planTickets(c: Contract): EventTicket[] {
   //    Para cada pagamento após o vencimento, insere um ticket de Juros na
   //    mesma data (order menor → dispara antes do Pagamento). Isso apura os
   //    juros pro-rata até o dia do pagamento, exatamente como a planilha-modelo.
+  const hasInterest = c.monthlyInterestPercent != null && c.monthlyInterestPercent > 0;
+
   for (const p of c.payments) {
     if (beforeOrEq(p.date, c.finalDate)) {
       tickets.push({
@@ -317,7 +329,7 @@ function planTickets(c: Contract): EventTicket[] {
         paymentAmount: p.amount,
       });
       // Juros pré-pagamento apenas pós-vencimento (antes do vencimento não há juros).
-      if (c.vencimento && before(c.vencimento, p.date)) {
+      if (hasInterest && c.vencimento && before(c.vencimento, p.date)) {
         tickets.push({ date: p.date, type: "Juros", order: TYPE_ORDER.Juros });
       }
     }
