@@ -6,12 +6,14 @@ export type CorrectionMode = "index" | "manual" | "none";
 
 /**
  * Como tratar variações negativas de índice.
- *  zero      – Utilizar 0: mantém saldo, acumula déficit e absorve em futuras positivas.
- *  maxPeriod – Máxima do período: retoma correção apenas quando o valor absoluto do
- *              índice superar o pico anterior.
- *  negative  – Usar negativo: aplica a variação como está (saldo diminui).
+ *  zero         – Utilizar 0: mantém saldo, acumula déficit e absorve em futuras positivas.
+ *  maxPeriod    – Máxima do período: retoma correção apenas quando o valor absoluto do
+ *                 índice superar o pico anterior.
+ *  negative     – Usar negativo: aplica a variação como está (saldo diminui).
+ *  lastPositive – Usar o último positivo: quando a variação for negativa, reaplica a
+ *                 última variação positiva registrada; se ainda não houver, usa 0.
  */
-export type NegativeIndexMode = "zero" | "maxPeriod" | "negative";
+export type NegativeIndexMode = "zero" | "maxPeriod" | "negative" | "lastPositive";
 
 /** Tipos pré-definidos de índices (mais o "custom" para qualquer outro). */
 export type IndexKind = "CUB/SC" | "INCC" | "IPCA" | "IGP-M" | "custom";

@@ -376,22 +376,27 @@ function addDays(iso: string, n: number): string {
 // ---------- motor de correção ------------------------------------------------
 
 /**
- * Estado interno para o modo "maxPeriod".
- * highWaterMark = valor absoluto do índice no último pico em que correção foi aplicada.
- * 0 = ainda não inicializado (será calculado no primeiro evento de Correção).
+ * Estado interno do motor de correção entre eventos.
+ *  highWaterMark    – para "maxPeriod": valor absoluto do índice no último pico em que
+ *                     correção foi aplicada; 0 = não inicializado.
+ *  lastPositiveVar  – para "lastPositive": última variação positiva observada;
+ *                     undefined = ainda não houve nenhuma.
  */
 interface CorrectionState {
   highWaterMark: number;
+  lastPositiveVar?: number;
 }
 
 /**
  * Resolve a variação a aplicar em um ticket de Correção.
  *
  * Modos de índice negativo (negativeIndexMode):
- *   zero      – acumula déficit; absorve em futuras positivas (comportamento padrão).
- *   maxPeriod – retoma correção somente quando o valor absoluto do índice superar
- *               o último pico; aplica apenas o ganho acima do pico.
- *   negative  – aplica a variação como está, mesmo que reduza o saldo.
+ *   zero         – usa 0 quando negativo (saldo inalterado); cada mês independente.
+ *   maxPeriod    – retoma correção somente quando o valor absoluto do índice superar
+ *                  o último pico; aplica apenas o ganho acima do pico.
+ *   negative     – aplica a variação como está, mesmo que reduza o saldo.
+ *   lastPositive – quando negativa, reaplica a última variação positiva observada;
+ *                  se ainda não houver nenhuma, comporta-se como "zero".
  */
 function resolveCorrection(
   c: Contract,
@@ -429,13 +434,22 @@ function resolveCorrection(
   }
 
   // ── Utilizar 0 ────────────────────────────────────────────────────────────
-  // Negativo → usa 0 (saldo inalterado). Positivo → aplica normalmente.
-  // Sem acúmulo de déficit: cada mês é tratado de forma independente.
   if (mode === "zero") {
     if (aferido < 0) {
       return { aferido, utilizado: 0, newState: state };
     }
     return { aferido, utilizado: aferido, newState: state };
+  }
+
+  // ── Usar o último positivo ────────────────────────────────────────────────
+  if (mode === "lastPositive") {
+    if (aferido > 0) {
+      // Atualiza o último positivo e aplica normalmente.
+      return { aferido, utilizado: aferido, newState: { ...state, lastPositiveVar: aferido } };
+    }
+    // Variação negativa (ou zero): reutiliza o último positivo, se houver.
+    const utilizado = state.lastPositiveVar ?? 0;
+    return { aferido, utilizado, newState: state };
   }
 
   // ── Máxima do período (high-water mark no valor absoluto) ─────────────────

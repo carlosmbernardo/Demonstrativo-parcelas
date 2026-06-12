@@ -232,6 +232,7 @@ export default function ContractForm({ contract, indices, errors, onChange }: Pr
                 <option value="zero">Utilizar 0 — mantém saldo, acumula déficit</option>
                 <option value="maxPeriod">Máxima do período — retoma só quando superar o pico</option>
                 <option value="negative">Usar negativo — aplica a variação como está</option>
+                <option value="lastPositive">Usar o último positivo — repete a última variação positiva</option>
               </select>
             </div>
           </>
