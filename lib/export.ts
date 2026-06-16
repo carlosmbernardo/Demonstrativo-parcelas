@@ -437,8 +437,13 @@ export function exportToExcel(
     // H — Valor do evento
     put(ws, `H${r}`, ev.value, "n", stRS, FMT_RS);
 
-    // I — Saldo (1ª linha não referencia C para evitar #VALUE! em C vazio)
-    const formula = i === 0 ? `ROUND(H${r},2)` : `C${r}+H${r}`;
+    // I — Saldo (Pagamento subtrai; demais eventos somam ao saldo anterior)
+    const formula =
+      i === 0
+        ? `ROUND(H${r},2)`
+        : ev.type === "Pagamento"
+        ? `C${r}-H${r}`
+        : `C${r}+H${r}`;
     putFormula(ws, `I${r}`, formula, ev.balance, stRS, FMT_RS);
   });
 
