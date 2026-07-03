@@ -14,6 +14,8 @@ const TYPE_BG: Record<string, string> = {
   Multa: "bg-red-50",
   Juros: "bg-orange-50/60",
   Pagamento: "bg-emerald-50",
+  Desconto: "bg-teal-50",
+  Adição: "bg-rose-50",
 };
 
 function fmtDate(iso: string): string {

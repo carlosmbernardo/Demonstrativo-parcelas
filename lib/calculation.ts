@@ -194,6 +194,20 @@ export function validateContract(
       errors[`payments.${i}.date`] = "Data inválida.";
   });
 
+  // Descontos
+  c.discounts?.forEach((d, i) => {
+    if (d.amount < 0) errors[`discounts.${i}.amount`] = "Valor negativo.";
+    if (d.date && !dateRe.test(d.date))
+      errors[`discounts.${i}.date`] = "Data inválida.";
+  });
+
+  // Adições
+  c.additions?.forEach((a, i) => {
+    if (a.amount < 0) errors[`additions.${i}.amount`] = "Valor negativo.";
+    if (a.date && !dateRe.test(a.date))
+      errors[`additions.${i}.date`] = "Data inválida.";
+  });
+
   // Modo de correção × índice
   if (c.correctionMode === "index") {
     if (!c.correctionIndexId) {
@@ -223,6 +237,17 @@ interface EventTicket {
   type: EventType;
   /** Para Pagamento: valor já conhecido. */
   paymentAmount?: number;
+  /** Para Desconto: valor já conhecido. */
+  discountAmount?: number;
+  /** Para Adição: valor já conhecido. */
+  additionAmount?: number;
+  /**
+   * Para Correção: mês/ano ("YYYY-MM") cuja variação deve ser aplicada.
+   * Normalmente igual ao mês de `date`, mas difere quando o índice tem
+   * `publicationDate` (a variação de um mês só é conhecida e aplicada na
+   * data de divulgação, que cai no mês seguinte).
+   */
+  refMonthYear?: string;
   /** Ordem secundária para empate de datas (Vencimento antes de Multa antes de Juros antes de Correção antes de Pagamento). */
   order: number;
 }
@@ -233,7 +258,9 @@ const TYPE_ORDER: Record<EventType, number> = {
   Vencimento: 1,
   Multa: 2,
   Juros: 3,
-  Pagamento: 5,
+  Desconto: 5,
+  Adição: 6,
+  Pagamento: 7,
 };
 
 /**
@@ -241,9 +268,13 @@ const TYPE_ORDER: Record<EventType, number> = {
  *
  * Convenção observada na planilha-modelo (típica do mercado brasileiro):
  *
- *  • **Correção** → sempre no **dia 1º de cada mês**. Reflete que índices
- *    como CUB/SC, INCC, IPCA, IGP-M são publicados mês-calendário; a
- *    variação do mês M é aplicada na primeira data do mês M.
+ *  • **Correção** → por padrão, no **dia 1º de cada mês**. Reflete que
+ *    índices como CUB/SC, INCC, IPCA, IGP-M são publicados mês-calendário;
+ *    a variação do mês M é aplicada na primeira data do mês M. Quando o
+ *    índice informa `publicationDate` para o mês M (ex.: INPC/IBGE, cuja
+ *    variação de M só é divulgada pelo IBGE já no mês M+1), a Correção
+ *    daquele mês é agendada na data real de divulgação em vez do dia 1º —
+ *    e só entra na janela do cálculo se a divulgação cair até a data final.
  *
  *  • **Vencimento** → marcador no dia exato do vencimento.
  *
@@ -254,7 +285,7 @@ const TYPE_ORDER: Record<EventType, number> = {
  *    data final cair no meio de um mês, adiciona-se um Juros parcial
  *    extra na própria data final.
  */
-function planTickets(c: Contract): EventTicket[] {
+function planTickets(c: Contract, index: CorrectionIndex | undefined): EventTicket[] {
   const tickets: EventTicket[] = [];
 
   // 1) Marcador inicial.
@@ -264,12 +295,35 @@ function planTickets(c: Contract): EventTicket[] {
     order: TYPE_ORDER.ValorOriginal,
   });
 
-  // 2) Correções no dia 1º de cada mês, do primeiro 1º após a competência
-  //    até a data final do cálculo.
-  let cursor = firstOfNextMonth(c.competencia);
-  while (beforeOrEq(cursor, c.finalDate)) {
-    tickets.push({ date: cursor, type: "Correção", order: TYPE_ORDER.Correção });
-    cursor = firstOfNextMonth(cursor);
+  // 2) Correções: uma por mês de referência, do primeiro mês após a
+  //    competência até (no máximo) um mês além do mês da data final — a
+  //    folga extra cobre o caso de uma divulgação com atraso que ainda
+  //    caia dentro da data final. Cada mês é agendado em sua
+  //    `publicationDate` (se o índice a informar) ou no dia 1º dele mesmo.
+  //
+  //    Se o índice está configurado mas ainda não há dado publicado para o
+  //    mês (índice em dia, mas o mercado ainda não divulgou), nenhum ticket
+  //    é gerado: não existe uma "Correção fantasma" na tabela, sobrando só
+  //    os eventos que de fato aconteceram (ex.: um Pagamento agendado no
+  //    mesmo mês continua aparecendo normalmente).
+  let refMonth = monthYearOf(firstOfNextMonth(c.competencia));
+  const lastRefMonth = nextMonthYear(monthYearOf(c.finalDate));
+  while (refMonth <= lastRefMonth) {
+    const entry = index?.entries.find((e) => e.monthYear === refMonth);
+    if (index && (!entry || entry.variation == null)) {
+      refMonth = nextMonthYear(refMonth);
+      continue;
+    }
+    const tickDate = entry?.publicationDate ?? `${refMonth}-01`;
+    if (beforeOrEq(tickDate, c.finalDate)) {
+      tickets.push({
+        date: tickDate,
+        refMonthYear: refMonth,
+        type: "Correção",
+        order: TYPE_ORDER.Correção,
+      });
+    }
+    refMonth = nextMonthYear(refMonth);
   }
 
   // 3) Se o vencimento entra na janela do cálculo, processa eventos pós-venc.
@@ -335,6 +389,39 @@ function planTickets(c: Contract): EventTicket[] {
     }
   }
 
+  // 5) Descontos concedidos (ex.: pela construtora). Mesmo tratamento dos
+  //    pagamentos: reduzem o saldo na própria data e, se após o vencimento,
+  //    disparam um Juros pro-rata antes de aplicar o desconto.
+  for (const disc of c.discounts) {
+    if (beforeOrEq(disc.date, c.finalDate)) {
+      tickets.push({
+        date: disc.date,
+        type: "Desconto",
+        order: TYPE_ORDER.Desconto,
+        discountAmount: disc.amount,
+      });
+      if (hasInterest && c.vencimento && before(c.vencimento, disc.date)) {
+        tickets.push({ date: disc.date, type: "Juros", order: TYPE_ORDER.Juros });
+      }
+    }
+  }
+
+  // 6) Adições lançadas sobre o saldo (ex.: taxa extra, custo adicional).
+  //    Mesmo tratamento dos descontos, mas somam ao saldo em vez de reduzir.
+  for (const add of c.additions) {
+    if (beforeOrEq(add.date, c.finalDate)) {
+      tickets.push({
+        date: add.date,
+        type: "Adição",
+        order: TYPE_ORDER.Adição,
+        additionAmount: add.amount,
+      });
+      if (hasInterest && c.vencimento && before(c.vencimento, add.date)) {
+        tickets.push({ date: add.date, type: "Juros", order: TYPE_ORDER.Juros });
+      }
+    }
+  }
+
   // Ordenação determinística por (data, ordem do tipo).
   tickets.sort((a, b) => (a.date === b.date ? a.order - b.order : a.date.localeCompare(b.date)));
   return dedupe(tickets);
@@ -346,6 +433,13 @@ function firstOfNextMonth(iso: string): string {
   const y = d.getUTCFullYear();
   const m = d.getUTCMonth();
   return formatISODate(new Date(Date.UTC(y, m + 1, 1)));
+}
+
+/** "YYYY-MM" do mês seguinte ao informado. */
+function nextMonthYear(monthYear: string): string {
+  const [y, m] = monthYear.split("-").map(Number);
+  const d = new Date(Date.UTC(y, m, 1)); // m (1-based) já aponta pro mês seguinte
+  return `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, "0")}`;
 }
 
 /** Retorna o último dia do mês da data ISO informada. */
@@ -360,7 +454,7 @@ function endOfMonth(iso: string): string {
 function dedupe(tickets: EventTicket[]): EventTicket[] {
   const seen = new Set<string>();
   return tickets.filter((t) => {
-    const k = `${t.date}|${t.type}|${t.paymentAmount ?? ""}`;
+    const k = `${t.date}|${t.type}|${t.paymentAmount ?? ""}|${t.refMonthYear ?? ""}|${t.discountAmount ?? ""}|${t.additionAmount ?? ""}`;
     if (seen.has(k)) return false;
     seen.add(k);
     return true;
@@ -427,29 +521,35 @@ function resolveCorrection(
 
   const aferido = entry.variation;
   const mode: NegativeIndexMode = c.negativeIndexMode ?? "zero";
+  // Composta por fora, sempre integralmente, depois do tratamento de índice
+  // negativo (não interfere na decisão de zerar/reter/reaplicar).
+  // Composição multiplicativa (juros sobre juros da própria correção):
+  // utilizado_final = (1 + utilizado) * (1 + adicional) - 1.
+  const additional = c.additionalVariationPercent ?? 0;
+  const withAdditional = (utilizado: number) => (1 + utilizado) * (1 + additional) - 1;
 
   // ── Usar negativo ──────────────────────────────────────────────────────────
   if (mode === "negative") {
-    return { aferido, utilizado: aferido, newState: state };
+    return { aferido, utilizado: withAdditional(aferido), newState: state };
   }
 
   // ── Utilizar 0 ────────────────────────────────────────────────────────────
   if (mode === "zero") {
     if (aferido < 0) {
-      return { aferido, utilizado: 0, newState: state };
+      return { aferido, utilizado: withAdditional(0), newState: state };
     }
-    return { aferido, utilizado: aferido, newState: state };
+    return { aferido, utilizado: withAdditional(aferido), newState: state };
   }
 
   // ── Usar o último positivo ────────────────────────────────────────────────
   if (mode === "lastPositive") {
     if (aferido > 0) {
       // Atualiza o último positivo e aplica normalmente.
-      return { aferido, utilizado: aferido, newState: { ...state, lastPositiveVar: aferido } };
+      return { aferido, utilizado: withAdditional(aferido), newState: { ...state, lastPositiveVar: aferido } };
     }
     // Variação negativa (ou zero): reutiliza o último positivo, se houver.
     const utilizado = state.lastPositiveVar ?? 0;
-    return { aferido, utilizado, newState: state };
+    return { aferido, utilizado: withAdditional(utilizado), newState: state };
   }
 
   // ── Máxima do período (high-water mark no valor absoluto) ─────────────────
@@ -467,10 +567,10 @@ function resolveCorrection(
 
   if (entry.value > highWaterMark) {
     const utilizado = entry.value / highWaterMark - 1;
-    return { aferido, utilizado, newState: { ...state, highWaterMark: entry.value } };
+    return { aferido, utilizado: withAdditional(utilizado), newState: { ...state, highWaterMark: entry.value } };
   }
 
-  return { aferido, utilizado: 0, newState: { ...state, highWaterMark } };
+  return { aferido, utilizado: withAdditional(0), newState: { ...state, highWaterMark } };
 }
 
 // ---------- motor principal --------------------------------------------------
@@ -518,9 +618,11 @@ export function calculateEvolution(
   let totalFine = 0;
   let totalInterest = 0;
   let totalPayments = 0;
+  let totalDiscount = 0;
+  let totalAddition = 0;
 
   const events: EvolutionEvent[] = [];
-  const tickets = planTickets(contract);
+  const tickets = planTickets(contract, index);
 
   for (const t of tickets) {
     const previousBalance = balance;
@@ -550,7 +652,7 @@ export function calculateEvolution(
       const { aferido, utilizado, newState } = resolveCorrection(
         contract,
         index,
-        monthYearOf(t.date),
+        t.refMonthYear ?? monthYearOf(t.date),
         correctionState,
         warnings,
       );
@@ -675,6 +777,42 @@ export function calculateEvolution(
       });
       continue;
     }
+
+    if (t.type === "Desconto") {
+      const value = t.discountAmount ?? 0;
+      balance -= value;
+      totalDiscount += value;
+
+      events.push({
+        date: t.date,
+        type: "Desconto",
+        previousBalance,
+        multa: accumulatedFine,
+        juros: cumulativeInterest,
+        base: previousBalance,
+        value,
+        balance,
+      });
+      continue;
+    }
+
+    if (t.type === "Adição") {
+      const value = t.additionAmount ?? 0;
+      balance += value;
+      totalAddition += value;
+
+      events.push({
+        date: t.date,
+        type: "Adição",
+        previousBalance,
+        multa: accumulatedFine,
+        juros: cumulativeInterest,
+        base: previousBalance,
+        value,
+        balance,
+      });
+      continue;
+    }
   }
 
   const summary: EvolutionSummary = {
@@ -683,6 +821,8 @@ export function calculateEvolution(
     fine: totalFine,
     interest: totalInterest,
     payments: totalPayments,
+    discount: totalDiscount,
+    addition: totalAddition,
     total: balance,
   };
 

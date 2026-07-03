@@ -28,6 +28,8 @@ function emptyContract(): Partial<Contract> {
     monthlyInterestPercent: undefined,
     finalDate: "",
     payments: [],
+    discounts: [],
+    additions: [],
   };
 }
 

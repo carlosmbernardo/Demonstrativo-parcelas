@@ -211,6 +211,8 @@ const TYPE_LABEL: Record<string, string> = {
   Multa:         "Multa",
   Juros:         "Juros",
   Pagamento:     "Pagamento",
+  Desconto:      "Desconto",
+  Adição:        "Adição",
 };
 
 // ── Utilitários ──────────────────────────────────────────────────────────────
@@ -283,9 +285,9 @@ function blank(ws: any, addr: string, st?: object) {
  *
  * Estrutura:
  *   Linha 1 : Título (mesclado A1:I1, fundo azul)
- *   Linhas 3-7 : Info do contrato (esq) + Resumo financeiro (dir)
- *   Linhas 9-10: Cabeçalho duplo da tabela (azul, "Índice" em F9:G9)
- *   Linha 11+  : Eventos – Saldo Anterior (C) e Saldo (I) como fórmulas
+ *   Linhas 3-9 : Info do contrato (esq) + Resumo financeiro (dir)
+ *   Linhas 11-12: Cabeçalho duplo da tabela (azul, "Índice" em F11:G11)
+ *   Linha 13+  : Eventos – Saldo Anterior (C) e Saldo (I) como fórmulas
  */
 export function exportToExcel(
   contract: Contract,
@@ -296,7 +298,10 @@ export function exportToExcel(
 
   const correcaoLabel =
     contract.correctionMode === "index"
-      ? `Índice ${idx?.name ?? "?"}`
+      ? `Índice ${idx?.name ?? "?"}` +
+        (contract.additionalVariationPercent
+          ? ` + adicional ${pctStr(contract.additionalVariationPercent)}`
+          : "")
       : contract.correctionMode === "manual"
       ? `Manual ${pctStr(contract.manualCorrectionPercent)}`
       : "Sem correção";
@@ -311,7 +316,7 @@ export function exportToExcel(
   for (const c of ["B","C","D","E","F","G","H","I"]) blank(ws, `${c}1`, ST_TITLE);
 
   // ───────────────────────────────────────────────────────────────────────
-  // LINHAS 3–7 — Cabeçalho: info do contrato (A–E) + resumo (F–I)
+  // LINHAS 3–9 — Cabeçalho: info do contrato (A–E) + resumo (F–I)
   // ───────────────────────────────────────────────────────────────────────
 
   // Col A: rótulos
@@ -320,6 +325,8 @@ export function exportToExcel(
   put(ws, "A5", "Competência",  "s", ST_LBL);
   put(ws, "A6", "Correção",     "s", ST_LBL);
   put(ws, "A7", "Juros mensal", "s", ST_LBL);
+  blank(ws, "A8", ST_VAL);
+  blank(ws, "A9", ST_VAL);
 
   // Col B–E: valores do contrato
   // Linha 3: parcela + título (B3 = fracção, C3:E3 = texto)
@@ -346,16 +353,21 @@ export function exportToExcel(
   put(ws, "D7", "Multa",                              "s", ST_LBL);
   put(ws, "E7", contract.finePercent ?? 0,            "n", ST_VAL, FMT_PCT);
 
+  blank(ws, "B8", ST_VAL); blank(ws, "C8", ST_VAL); blank(ws, "D8", ST_VAL); blank(ws, "E8", ST_VAL);
+  blank(ws, "B9", ST_VAL); blank(ws, "C9", ST_VAL); blank(ws, "D9", ST_VAL); blank(ws, "E9", ST_VAL);
+
   // Col F–G: rótulos + valores do resumo
   const SUMMARY_ROWS: [string, string, number][] = [
     ["F3", "G3", summary.originalValue],
     ["F4", "G4", summary.correction   ],
     ["F5", "G5", summary.payments     ],
-    ["F6", "G6", summary.fine         ],
-    ["F7", "G7", summary.interest     ],
+    ["F6", "G6", summary.discount     ],
+    ["F7", "G7", summary.addition     ],
+    ["F8", "G8", summary.fine         ],
+    ["F9", "G9", summary.interest     ],
   ];
   const SUMMARY_LABELS = [
-    "Valor original", "Correção", "Pagamento", "Multa", "Juros",
+    "Valor original", "Correção", "Pagamento", "Desconto", "Adição", "Multa", "Juros",
   ];
   SUMMARY_ROWS.forEach(([fl, gl, val], i) => {
     put(ws, fl, SUMMARY_LABELS[i], "s", ST_LBL);
@@ -363,34 +375,34 @@ export function exportToExcel(
   });
 
   // Col H: vazio no bloco de resumo
-  for (const r of ["3","4","5","6","7"]) blank(ws, `H${r}`);
+  for (const r of ["3","4","5","6","7","8","9"]) blank(ws, `H${r}`);
 
-  // Col I: TOTAL (I3:I7 mescladas)
+  // Col I: TOTAL (I3:I9 mescladas)
   put(ws, "I3", summary.total, "n", ST_TOTAL, FMT_RS);
-  for (const r of ["4","5","6","7"]) blank(ws, `I${r}`, ST_TOTAL);
+  for (const r of ["4","5","6","7","8","9"]) blank(ws, `I${r}`, ST_TOTAL);
 
   // ───────────────────────────────────────────────────────────────────────
-  // LINHAS 9–10 — Cabeçalho duplo da tabela
+  // LINHAS 11–12 — Cabeçalho duplo da tabela
   // ───────────────────────────────────────────────────────────────────────
-  // Linha 9 — cabeçalhos principais (colunas sem sub-cabeçalho ficam mescladas 9:10)
-  const HDR9: [string, string][] = [
-    ["A9","Data"], ["B9","Tipo"], ["C9","Saldo Anterior"],
-    ["D9","Multa"], ["E9","Juros"],
-    ["F9","Índice"],   // mescla F9:G9
-    ["H9","Valor"], ["I9","Saldo"],
+  // Linha 11 — cabeçalhos principais (colunas sem sub-cabeçalho ficam mescladas 11:12)
+  const HDR11: [string, string][] = [
+    ["A11","Data"], ["B11","Tipo"], ["C11","Saldo Anterior"],
+    ["D11","Multa"], ["E11","Juros"],
+    ["F11","Índice"],   // mescla F11:G11
+    ["H11","Valor"], ["I11","Saldo"],
   ];
-  for (const [addr, label] of HDR9) put(ws, addr, label, "s", ST_COL);
-  blank(ws, "G9", ST_COL); // parte da mescla F9:G9
+  for (const [addr, label] of HDR11) put(ws, addr, label, "s", ST_COL);
+  blank(ws, "G11", ST_COL); // parte da mescla F11:G11
 
-  // Linha 10 — sub-cabeçalhos do Índice + células vazias das demais mesclagens
-  put(ws, "F10", "Aferido",   "s", ST_COL);
-  put(ws, "G10", "Utilizado", "s", ST_COL);
-  for (const c of ["A","B","C","D","E","H","I"]) blank(ws, `${c}10`, ST_COL);
+  // Linha 12 — sub-cabeçalhos do Índice + células vazias das demais mesclagens
+  put(ws, "F12", "Aferido",   "s", ST_COL);
+  put(ws, "G12", "Utilizado", "s", ST_COL);
+  for (const c of ["A","B","C","D","E","H","I"]) blank(ws, `${c}12`, ST_COL);
 
   // ───────────────────────────────────────────────────────────────────────
-  // LINHAS DE DADOS — a partir de 11
+  // LINHAS DE DADOS — a partir de 13
   // ───────────────────────────────────────────────────────────────────────
-  const FIRST_ROW = 11;
+  const FIRST_ROW = 13;
 
   events.forEach((ev: EvolutionEvent, i: number) => {
     const r = FIRST_ROW + i;
@@ -437,11 +449,11 @@ export function exportToExcel(
     // H — Valor do evento
     put(ws, `H${r}`, ev.value, "n", stRS, FMT_RS);
 
-    // I — Saldo (Pagamento subtrai; demais eventos somam ao saldo anterior)
+    // I — Saldo (Pagamento/Desconto subtraem; demais eventos somam ao saldo anterior)
     const formula =
       i === 0
         ? `ROUND(H${r},2)`
-        : ev.type === "Pagamento"
+        : ev.type === "Pagamento" || ev.type === "Desconto"
         ? `C${r}-H${r}`
         : `C${r}+H${r}`;
     putFormula(ws, `I${r}`, formula, ev.balance, stRS, FMT_RS);
@@ -465,15 +477,15 @@ export function exportToExcel(
       )
       .sort((a, b) => a.monthYear.localeCompare(b.monthYear));
 
-    // Linha 9 — nome do índice (K9:M9 mesclados)
-    put(ws, "K9", idx.name, "s", ST_COL);
-    blank(ws, "L9", ST_COL);
-    blank(ws, "M9", ST_COL);
+    // Linha 11 — nome do índice (K11:M11 mesclados)
+    put(ws, "K11", idx.name, "s", ST_COL);
+    blank(ws, "L11", ST_COL);
+    blank(ws, "M11", ST_COL);
 
-    // Linha 10 — sub-cabeçalhos
-    put(ws, "K10", "Mês/Ano",    "s", ST_COL);
-    put(ws, "L10", "Valor",      "s", ST_COL);
-    put(ws, "M10", "Variação %", "s", ST_COL);
+    // Linha 12 — sub-cabeçalhos
+    put(ws, "K12", "Mês/Ano",    "s", ST_COL);
+    put(ws, "L12", "Valor",      "s", ST_COL);
+    put(ws, "M12", "Variação %", "s", ST_COL);
 
     // Dados — uma linha por entrada do índice (mesma alternância horizontal)
     cubEntries.forEach((entry, i) => {
@@ -541,9 +553,11 @@ export function exportToExcel(
     { hpt: 18 }, // 5: info
     { hpt: 18 }, // 6: info
     { hpt: 18 }, // 7: info
-    { hpt: 5  }, // 8: espaço
-    { hpt: 22 }, // 9: cabeçalho linha 1
-    { hpt: 16 }, // 10: cabeçalho linha 2
+    { hpt: 18 }, // 8: info
+    { hpt: 18 }, // 9: info
+    { hpt: 5  }, // 10: espaço
+    { hpt: 22 }, // 11: cabeçalho linha 1
+    { hpt: 16 }, // 12: cabeçalho linha 2
   ];
 
   // Mesclas
@@ -554,21 +568,21 @@ export function exportToExcel(
     { s: { r: 2, c: 2 }, e: { r: 2, c: 4 } }, // C3:E3 (título do contrato)
     { s: { r: 3, c: 1 }, e: { r: 3, c: 4 } }, // B4:E4 (devedor)
     // Total
-    { s: { r: 2, c: 8 }, e: { r: 6, c: 8 } }, // I3:I7
-    // Cabeçalho duplo — mesclagem vertical (9:10) para colunas sem sub-label
-    { s: { r: 8, c: 0 }, e: { r: 9, c: 0 } }, // A9:A10
-    { s: { r: 8, c: 1 }, e: { r: 9, c: 1 } }, // B9:B10
-    { s: { r: 8, c: 2 }, e: { r: 9, c: 2 } }, // C9:C10
-    { s: { r: 8, c: 3 }, e: { r: 9, c: 3 } }, // D9:D10
-    { s: { r: 8, c: 4 }, e: { r: 9, c: 4 } }, // E9:E10
-    { s: { r: 8, c: 5 }, e: { r: 8, c: 6 } }, // F9:G9 (Índice)
-    { s: { r: 8, c: 7 }, e: { r: 9, c: 7 } }, // H9:H10
-    { s: { r: 8, c: 8 }, e: { r: 9, c: 8 } }, // I9:I10
+    { s: { r: 2, c: 8 }, e: { r: 8, c: 8 } }, // I3:I9
+    // Cabeçalho duplo — mesclagem vertical (11:12) para colunas sem sub-label
+    { s: { r: 10, c: 0 }, e: { r: 11, c: 0 } }, // A11:A12
+    { s: { r: 10, c: 1 }, e: { r: 11, c: 1 } }, // B11:B12
+    { s: { r: 10, c: 2 }, e: { r: 11, c: 2 } }, // C11:C12
+    { s: { r: 10, c: 3 }, e: { r: 11, c: 3 } }, // D11:D12
+    { s: { r: 10, c: 4 }, e: { r: 11, c: 4 } }, // E11:E12
+    { s: { r: 10, c: 5 }, e: { r: 10, c: 6 } }, // F11:G11 (Índice)
+    { s: { r: 10, c: 7 }, e: { r: 11, c: 7 } }, // H11:H12
+    { s: { r: 10, c: 8 }, e: { r: 11, c: 8 } }, // I11:I12
   ];
   ws["!merges"] = hasCubTable
     ? [
         ...baseMerges,
-        { s: { r: 8, c: 10 }, e: { r: 8, c: 12 } }, // K9:M9 (nome do índice)
+        { s: { r: 10, c: 10 }, e: { r: 10, c: 12 } }, // K11:M11 (nome do índice)
       ]
     : baseMerges;
 

@@ -2,6 +2,8 @@
 
 import { Contract, CorrectionIndex, NegativeIndexMode, ValidationErrors } from "@/types";
 import PaymentsInput from "./PaymentsInput";
+import DiscountsInput from "./DiscountsInput";
+import AdditionsInput from "./AdditionsInput";
 
 interface Props {
   contract: Partial<Contract>;
@@ -235,6 +237,34 @@ export default function ContractForm({ contract, indices, errors, onChange }: Pr
                 <option value="lastPositive">Usar o último positivo — repete a última variação positiva</option>
               </select>
             </div>
+
+            <div>
+              <label className="label">
+                Variação adicional (%/mês){" "}
+                <span className="text-slate-400 font-normal">(opcional)</span>
+              </label>
+              <input
+                type="number"
+                step="0.0001"
+                className="input"
+                placeholder="ex.: 0,5"
+                value={pct(contract.additionalVariationPercent)}
+                onChange={(e) =>
+                  onChange({
+                    additionalVariationPercent:
+                      e.target.value.trim() === ""
+                        ? undefined
+                        : (parseFloat(e.target.value) || 0) / 100,
+                  })
+                }
+              />
+              <p className="text-xs text-slate-500 mt-1">
+                Composta, todo mês, com a variação já resolvida do índice acima.
+              </p>
+              {errors.additionalVariationPercent && (
+                <p className="error">{errors.additionalVariationPercent}</p>
+              )}
+            </div>
           </>
         )}
 
@@ -264,6 +294,20 @@ export default function ContractForm({ contract, indices, errors, onChange }: Pr
       <PaymentsInput
         payments={contract.payments ?? []}
         onChange={(payments) => onChange({ payments })}
+        errors={errors as Record<string, string | undefined>}
+      />
+
+      {/* Descontos */}
+      <DiscountsInput
+        discounts={contract.discounts ?? []}
+        onChange={(discounts) => onChange({ discounts })}
+        errors={errors as Record<string, string | undefined>}
+      />
+
+      {/* Adições */}
+      <AdditionsInput
+        additions={contract.additions ?? []}
+        onChange={(additions) => onChange({ additions })}
         errors={errors as Record<string, string | undefined>}
       />
     </div>

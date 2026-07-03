@@ -41,6 +41,20 @@ function parseValue(raw: unknown): number | null {
   return isNaN(n) ? null : n;
 }
 
+/**
+ * Reconhece célula formatada como percentual (ex.: "0.65 %", "-0,21%").
+ * Retorna a fração decimal (0.65 % → 0.0065) ou null se a célula não trouxer "%".
+ * Usada para planilhas que trazem a variação já pronta (ex.: INPC/IBGE),
+ * em vez do valor absoluto do índice.
+ */
+function parsePercent(raw: unknown): number | null {
+  if (raw == null || typeof raw === "number") return null;
+  const s = String(raw).trim();
+  if (!s.includes("%")) return null;
+  const n = parseFloat(s.replace("%", "").trim().replace(",", "."));
+  return isNaN(n) ? null : n / 100;
+}
+
 export interface ImportResult {
   entries: IndexEntry[];
   warnings: string[];
@@ -73,7 +87,11 @@ export async function parseIndexSpreadsheet(file: File): Promise<ImportResult> {
   }
 
   const warnings: string[] = [];
-  const entries: IndexEntry[] = [];
+
+  // Linhas cruas, ainda sem decidir se a coluna traz valor absoluto do
+  // índice ou a variação percentual já pronta (ex.: planilhas do INPC/IBGE
+  // trazem "mês + variação%", sem o valor acumulado do índice).
+  const raw: { line: number; monthYear: string; value?: number; percent?: number }[] = [];
 
   for (let i = dataStart; i < rows.length; i++) {
     const row = rows[i] as unknown[];
@@ -81,17 +99,50 @@ export async function parseIndexSpreadsheet(file: File): Promise<ImportResult> {
     const rawValue = row?.[valueCol];
 
     const monthYear = parseMonthYear(rawMonth);
-    const value = parseValue(rawValue);
+    const percent = parsePercent(rawValue);
+    const value = percent == null ? parseValue(rawValue) : null;
 
-    if (!monthYear || value == null) {
+    if (!monthYear || (value == null && percent == null)) {
       if (rawMonth != null || rawValue != null) {
         warnings.push(`Linha ${i + 1}: ignorada (mês="${rawMonth}", valor="${rawValue}")`);
       }
       continue;
     }
 
-    entries.push({ id: uid(), monthYear, value });
+    raw.push({ line: i + 1, monthYear, value: value ?? undefined, percent: percent ?? undefined });
   }
+
+  const isPercentFormat = raw.some((r) => r.percent != null);
+
+  if (!isPercentFormat) {
+    const entries: IndexEntry[] = raw
+      .filter((r) => r.value != null)
+      .map((r) => ({ id: uid(), monthYear: r.monthYear, value: r.value as number }));
+    return { entries, warnings };
+  }
+
+  // Formato "variação%": não há valor absoluto do índice, então sintetiza-se
+  // uma série de valores compondo as variações a partir de uma base
+  // arbitrária (100). O valor em si não tem significado absoluto — serve só
+  // para que o resto do app (que deriva a variação de `value[i]/value[i-1]`)
+  // continue funcionando sem mudanças. A variação recalculada bate com a
+  // percentual importada.
+  const sorted = raw
+    .filter((r) => r.percent != null)
+    .sort((a, b) => a.monthYear.localeCompare(b.monthYear));
+
+  for (const r of raw) {
+    if (r.percent == null) {
+      warnings.push(`Linha ${r.line}: ignorada (mês="${r.monthYear}", sem variação percentual).`);
+    }
+  }
+
+  const entries: IndexEntry[] = [];
+  let value = 100;
+  sorted.forEach((r, i) => {
+    if (i > 0) value = value * (1 + (r.percent as number));
+    entries.push({ id: uid(), monthYear: r.monthYear, value });
+  });
 
   return { entries, warnings };
 }

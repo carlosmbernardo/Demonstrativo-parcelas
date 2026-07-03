@@ -16,7 +16,7 @@ export type CorrectionMode = "index" | "manual" | "none";
 export type NegativeIndexMode = "zero" | "maxPeriod" | "negative" | "lastPositive";
 
 /** Tipos pré-definidos de índices (mais o "custom" para qualquer outro). */
-export type IndexKind = "CUB/SC" | "INCC" | "IPCA" | "IGP-M" | "custom";
+export type IndexKind = "CUB/SC" | "INCC" | "IPCA" | "IGP-M" | "INPC/IBGE" | "custom";
 
 /** Uma entrada mensal de um índice. */
 export interface IndexEntry {
@@ -31,6 +31,13 @@ export interface IndexEntry {
    * para o primeiro mês cadastrado (não há mês anterior).
    */
   variation?: number;
+  /**
+   * Data de divulgação oficial deste mês de referência, ISO "YYYY-MM-DD"
+   * (ex.: o INPC de 2026-06 só é divulgado pelo IBGE em 2026-07-10). Quando
+   * presente, a Correção deste mês é agendada nessa data em vez do dia 1º do
+   * próprio mês (convenção usada para índices sem essa informação).
+   */
+  publicationDate?: string;
 }
 
 /** Um índice cadastrado, com seu histórico de valores mensais. */
@@ -46,6 +53,24 @@ export interface Payment {
   id: string;
   /** Data ISO "YYYY-MM-DD". */
   date: string;
+  amount: number;
+}
+
+/** Desconto concedido ao cliente (ex.: pela construtora), em valor fixo. */
+export interface Discount {
+  id: string;
+  /** Data ISO "YYYY-MM-DD" em que o desconto foi concedido. */
+  date: string;
+  /** Valor fixo em R$. */
+  amount: number;
+}
+
+/** Adição lançada sobre o saldo (ex.: taxa extra, custo adicional), em valor fixo. */
+export interface Addition {
+  id: string;
+  /** Data ISO "YYYY-MM-DD" em que a adição foi lançada. */
+  date: string;
+  /** Valor fixo em R$. */
   amount: number;
 }
 
@@ -68,6 +93,13 @@ export interface Contract {
   manualCorrectionPercent?: number;
   /** Como tratar variações negativas (apenas correctionMode === "index"). */
   negativeIndexMode?: NegativeIndexMode;
+  /**
+   * Variação adicional composta, todo mês, com a variação já resolvida do
+   * índice (após o tratamento de índice negativo):
+   * utilizado_final = (1 + utilizado) * (1 + adicional) - 1.
+   * Fração decimal (ex.: 0.005 = 0,5%/mês). Apenas correctionMode === "index".
+   */
+  additionalVariationPercent?: number;
   /** Multa em fração decimal (ex.: 0.02 = 2%). */
   finePercent?: number;
   /** Juros mensais em fração decimal (ex.: 0.01 = 1%/mês). */
@@ -75,6 +107,10 @@ export interface Contract {
   /** Data limite do cálculo ISO "YYYY-MM-DD". */
   finalDate: string;
   payments: Payment[];
+  /** Descontos concedidos ao cliente (ex.: pela construtora), em valor fixo. */
+  discounts: Discount[];
+  /** Adições lançadas sobre o saldo (ex.: taxa extra, custo adicional), em valor fixo. */
+  additions: Addition[];
 }
 
 /** Tipo de evento na linha do tempo da evolução. */
@@ -84,7 +120,9 @@ export type EventType =
   | "Vencimento"
   | "Multa"
   | "Juros"
-  | "Pagamento";
+  | "Pagamento"
+  | "Desconto"
+  | "Adição";
 
 /** Uma linha da tabela de evolução. */
 export interface EvolutionEvent {
@@ -115,6 +153,8 @@ export interface EvolutionSummary {
   fine: number;
   interest: number;
   payments: number;
+  discount: number;
+  addition: number;
   total: number;
 }
 

@@ -11,7 +11,7 @@ interface Props {
   onChange: (indices: CorrectionIndex[]) => void;
 }
 
-const KIND_OPTIONS: IndexKind[] = ["CUB/SC", "INCC", "IPCA", "IGP-M", "custom"];
+const KIND_OPTIONS: IndexKind[] = ["CUB/SC", "INCC", "IPCA", "IGP-M", "INPC/IBGE", "custom"];
 
 /**
  * Gerenciador de índices. Cada índice tem nome + tipo + lista de entradas
@@ -250,6 +250,10 @@ export default function IndexManager({ indices, onChange }: Props) {
                       <th className="text-left px-2 py-2">Mês/Ano</th>
                       <th className="text-right px-2 py-2">Valor</th>
                       <th className="text-right px-2 py-2">Variação</th>
+                      <th className="text-left px-2 py-2">
+                        Publicação{" "}
+                        <span className="text-slate-400 font-normal">(opcional)</span>
+                      </th>
                       <th className="px-2 py-2"></th>
                     </tr>
                   </thead>
@@ -285,6 +289,19 @@ export default function IndexManager({ indices, onChange }: Props) {
                             {e.variation == null
                               ? "—"
                               : (e.variation * 100).toFixed(4).replace(".", ",") + "%"}
+                          </td>
+                          <td className="px-2 py-1.5">
+                            <input
+                              type="date"
+                              className="input !py-1"
+                              value={e.publicationDate ?? ""}
+                              onChange={(ev) =>
+                                updateEntry(e.id, {
+                                  publicationDate: ev.target.value || undefined,
+                                })
+                              }
+                              title="Data em que este mês foi/será oficialmente divulgado. Se preenchida, a Correção deste mês é agendada nessa data em vez do dia 1º."
+                            />
                           </td>
                           <td className="px-2 py-1.5">
                             <button

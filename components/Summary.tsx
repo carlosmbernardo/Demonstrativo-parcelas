@@ -27,6 +27,8 @@ export default function Summary({ summary }: Props) {
         <Row label="Multa" value={summary.fine} accent="red" />
         <Row label="Juros" value={summary.interest} accent="orange" />
         <Row label="Pagamentos" value={-summary.payments} accent="green" />
+        <Row label="Desconto" value={-summary.discount} accent="green" />
+        <Row label="Adição" value={summary.addition} accent="red" />
         <div className="col-span-2 border-t border-slate-200 mt-2 pt-3 flex items-baseline justify-between">
           <span className="text-sm font-medium text-slate-700">Total atualizado</span>
           <span className="text-xl font-bold text-slate-900 tabular-nums">
