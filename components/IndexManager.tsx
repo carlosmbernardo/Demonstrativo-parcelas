@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from "react";
 import { CorrectionIndex, IndexEntry, IndexKind } from "@/types";
-import { recomputeIndexVariations } from "@/lib/calculation";
+import { applyPercentEntry, recomputeIndexVariations } from "@/lib/calculation";
 import { uid } from "@/lib/storage";
 import { parseIndexSpreadsheet } from "@/lib/importIndex";
 
@@ -11,7 +11,7 @@ interface Props {
   onChange: (indices: CorrectionIndex[]) => void;
 }
 
-const KIND_OPTIONS: IndexKind[] = ["CUB/SC", "INCC", "IPCA", "IGP-M", "INPC/IBGE", "custom"];
+const KIND_OPTIONS: IndexKind[] = ["CUB/SC", "INCC", "IPCA", "IGP-M", "INPC/IBGE", "INCC-M", "custom"];
 
 /**
  * Gerenciador de índices. Cada índice tem nome + tipo + lista de entradas
@@ -68,7 +68,10 @@ export default function IndexManager({ indices, onChange }: Props) {
       const now = new Date();
       monthYear = `${now.getUTCFullYear()}-${String(now.getUTCMonth() + 1).padStart(2, "0")}`;
     }
-    const entry: IndexEntry = { id: uid(), monthYear, value: 0 };
+    // Em modo percentual, novo mês entra com 0% (repete o valor anterior)
+    // até o usuário digitar a variação real; evita um "-100%" nonsense.
+    const value = selected.percentEntry ? last?.value ?? 100 : 0;
+    const entry: IndexEntry = { id: uid(), monthYear, value };
     const recomputed = recomputeIndexVariations([...selected.entries, entry]);
     updateSelected({ entries: recomputed });
   }
@@ -78,6 +81,12 @@ export default function IndexManager({ indices, onChange }: Props) {
     const updated = selected.entries.map((e) => (e.id === id ? { ...e, ...patch } : e));
     const recomputed = recomputeIndexVariations(updated);
     updateSelected({ entries: recomputed });
+  }
+
+  /** Edita a variação (%) diretamente, reconstruindo a cadeia de valores. */
+  function updateEntryPercent(id: string, percent: number) {
+    if (!selected) return;
+    updateSelected({ entries: applyPercentEntry(selected.entries, id, percent) });
   }
 
   function removeEntry(id: string) {
@@ -192,6 +201,15 @@ export default function IndexManager({ indices, onChange }: Props) {
               </div>
             </div>
 
+            <label className="flex items-center gap-2 text-xs text-slate-600">
+              <input
+                type="checkbox"
+                checked={selected.percentEntry ?? false}
+                onChange={(e) => updateSelected({ percentEntry: e.target.checked })}
+              />
+              Inserir variação (%) diretamente, em vez do valor acumulado do índice
+            </label>
+
             <div className="flex items-center justify-between border-t border-slate-100 pt-3">
               <h4 className="text-sm font-medium text-slate-700">Entradas mensais</h4>
               <div className="flex gap-2">
@@ -248,8 +266,14 @@ export default function IndexManager({ indices, onChange }: Props) {
                   <thead className="bg-slate-50 text-slate-700 text-xs">
                     <tr>
                       <th className="text-left px-2 py-2">Mês/Ano</th>
-                      <th className="text-right px-2 py-2">Valor</th>
-                      <th className="text-right px-2 py-2">Variação</th>
+                      {selected.percentEntry ? (
+                        <th className="text-right px-2 py-2">Variação (%)</th>
+                      ) : (
+                        <>
+                          <th className="text-right px-2 py-2">Valor</th>
+                          <th className="text-right px-2 py-2">Variação</th>
+                        </>
+                      )}
                       <th className="text-left px-2 py-2">
                         Publicação{" "}
                         <span className="text-slate-400 font-normal">(opcional)</span>
@@ -258,9 +282,14 @@ export default function IndexManager({ indices, onChange }: Props) {
                     </tr>
                   </thead>
                   <tbody>
-                    {[...selected.entries]
-                      .sort((a, b) => b.monthYear.localeCompare(a.monthYear))
-                      .map((e) => (
+                    {(() => {
+                      const sortedAsc = [...selected.entries].sort((a, b) =>
+                        a.monthYear.localeCompare(b.monthYear),
+                      );
+                      const oldestId = sortedAsc[0]?.id;
+                      return [...selected.entries]
+                        .sort((a, b) => b.monthYear.localeCompare(a.monthYear))
+                        .map((e) => (
                         <tr key={e.id} className="border-t border-slate-100">
                           <td className="px-2 py-1.5">
                             <input
@@ -272,24 +301,49 @@ export default function IndexManager({ indices, onChange }: Props) {
                               }
                             />
                           </td>
-                          <td className="px-2 py-1.5">
-                            <input
-                              type="number"
-                              step="0.0001"
-                              className="input !py-1 text-right tabular-nums"
-                              value={e.value || ""}
-                              onChange={(ev) =>
-                                updateEntry(e.id, {
-                                  value: parseFloat(ev.target.value) || 0,
-                                })
-                              }
-                            />
-                          </td>
-                          <td className="px-2 py-1.5 text-right tabular-nums text-slate-600 text-xs">
-                            {e.variation == null
-                              ? "—"
-                              : (e.variation * 100).toFixed(4).replace(".", ",") + "%"}
-                          </td>
+                          {selected.percentEntry ? (
+                            e.id === oldestId ? (
+                              <td className="px-2 py-1.5 text-right tabular-nums text-slate-400 text-xs">
+                                — (base)
+                              </td>
+                            ) : (
+                              <td className="px-2 py-1.5">
+                                <input
+                                  type="number"
+                                  step="0.0001"
+                                  className="input !py-1 text-right tabular-nums"
+                                  value={e.variation == null ? "" : (e.variation * 100).toFixed(4)}
+                                  onChange={(ev) =>
+                                    updateEntryPercent(
+                                      e.id,
+                                      (parseFloat(ev.target.value) || 0) / 100,
+                                    )
+                                  }
+                                />
+                              </td>
+                            )
+                          ) : (
+                            <>
+                              <td className="px-2 py-1.5">
+                                <input
+                                  type="number"
+                                  step="0.0001"
+                                  className="input !py-1 text-right tabular-nums"
+                                  value={e.value || ""}
+                                  onChange={(ev) =>
+                                    updateEntry(e.id, {
+                                      value: parseFloat(ev.target.value) || 0,
+                                    })
+                                  }
+                                />
+                              </td>
+                              <td className="px-2 py-1.5 text-right tabular-nums text-slate-600 text-xs">
+                                {e.variation == null
+                                  ? "—"
+                                  : (e.variation * 100).toFixed(4).replace(".", ",") + "%"}
+                              </td>
+                            </>
+                          )}
                           <td className="px-2 py-1.5">
                             <input
                               type="date"
@@ -313,7 +367,8 @@ export default function IndexManager({ indices, onChange }: Props) {
                             </button>
                           </td>
                         </tr>
-                      ))}
+                      ));
+                    })()}
                   </tbody>
                 </table>
               </div>

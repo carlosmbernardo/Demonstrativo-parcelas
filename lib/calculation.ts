@@ -123,6 +123,39 @@ export function recomputeIndexVariations(entries: IndexEntry[]): IndexEntry[] {
   });
 }
 
+/**
+ * Reconstrói a cadeia de `value` a partir de percentuais digitados
+ * diretamente (em vez do valor absoluto do índice). Usada por índices com
+ * `percentEntry` ativo (ex.: INCC-M), onde é mais fácil digitar a variação
+ * do mês do que rastrear um valor acumulado (como no CUB).
+ *
+ * A entrada mais antiga não tem variação própria — serve de base (valor
+ * mantido como está, ou 100 se ainda vazio). As demais usam o percentual
+ * digitado (para a que foi editada) ou o percentual já calculado
+ * anteriormente (para as outras), compondo o valor a partir do valor
+ * anterior. Isso garante que editar o percentual de um mês antigo "empurre"
+ * corretamente os valores dos meses seguintes, sem alterar as variações que
+ * eles já tinham.
+ */
+export function applyPercentEntry(
+  entries: IndexEntry[],
+  editedId: string,
+  newPercent: number,
+): IndexEntry[] {
+  const sorted = [...entries].sort((a, b) => a.monthYear.localeCompare(b.monthYear));
+  let value = 100;
+  const rebuilt = sorted.map((entry, i) => {
+    if (i === 0) {
+      value = entry.value || 100;
+      return { ...entry, value };
+    }
+    const percent = entry.id === editedId ? newPercent : entry.variation ?? 0;
+    value = value * (1 + percent);
+    return { ...entry, value };
+  });
+  return recomputeIndexVariations(rebuilt);
+}
+
 /** Procura a entrada de um índice para o mês/ano dado. */
 function findEntry(index: CorrectionIndex, monthYear: string): IndexEntry | undefined {
   return index.entries.find((e) => e.monthYear === monthYear);

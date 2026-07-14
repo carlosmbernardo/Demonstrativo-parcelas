@@ -16,7 +16,7 @@ export type CorrectionMode = "index" | "manual" | "none";
 export type NegativeIndexMode = "zero" | "maxPeriod" | "negative" | "lastPositive";
 
 /** Tipos pré-definidos de índices (mais o "custom" para qualquer outro). */
-export type IndexKind = "CUB/SC" | "INCC" | "IPCA" | "IGP-M" | "INPC/IBGE" | "custom";
+export type IndexKind = "CUB/SC" | "INCC" | "IPCA" | "IGP-M" | "INPC/IBGE" | "INCC-M" | "custom";
 
 /** Uma entrada mensal de um índice. */
 export interface IndexEntry {
@@ -46,6 +46,13 @@ export interface CorrectionIndex {
   name: string;
   kind: IndexKind;
   entries: IndexEntry[];
+  /**
+   * Quando true, a coluna "Valor" das entradas mensais vira uma entrada
+   * direta de variação (%) em vez do valor absoluto acumulado do índice
+   * (mais fácil para índices como o INCC-M, cuja fonte já traz a variação
+   * pronta). O valor absoluto é sintetizado internamente a partir dela.
+   */
+  percentEntry?: boolean;
 }
 
 /** Pagamento parcial registrado pelo usuário. */

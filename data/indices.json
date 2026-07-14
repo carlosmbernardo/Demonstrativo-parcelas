@@ -1750,6 +1750,1245 @@
         "value": 185.09061842441523,
         "variation": 0.00649999999999995,
         "publicationDate": "2026-06-12"
+      },
+      {
+        "id": "mrkyitlo2m8i15",
+        "monthYear": "2026-07",
+        "value": 185.34974529020943,
+        "variation": 0.0014,
+        "publicationDate": "2026-07-10"
+      }
+    ]
+  },
+  {
+    "id": "mrkyn26hvgww89",
+    "name": "INCC-M",
+    "kind": "INCC-M",
+    "percentEntry": true,
+    "entries": [
+      {
+        "id": "mrkyn26gzh6k7a",
+        "monthYear": "2012-01",
+        "value": 100,
+        "publicationDate": "2012-01-01"
+      },
+      {
+        "id": "mrkyn26gkz92ev",
+        "monthYear": "2012-02",
+        "value": 100.66999999999999,
+        "publicationDate": "2012-02-01",
+        "variation": 0.006699999999999928
+      },
+      {
+        "id": "mrkyn26gayjscp",
+        "monthYear": "2012-03",
+        "value": 101.09281399999999,
+        "publicationDate": "2012-03-01",
+        "variation": 0.0041999999999999815
+      },
+      {
+        "id": "mrkyn26gw3dihq",
+        "monthYear": "2012-04",
+        "value": 101.46685741179999,
+        "publicationDate": "2012-04-01",
+        "variation": 0.0037000000000000366
+      },
+      {
+        "id": "mrkyn26gtv9a8e",
+        "monthYear": "2012-05",
+        "value": 102.30903232831793,
+        "publicationDate": "2012-05-01",
+        "variation": 0.008299999999999974
+      },
+      {
+        "id": "mrkyn26gsla5br",
+        "monthYear": "2012-06",
+        "value": 103.63904974858605,
+        "publicationDate": "2012-06-01",
+        "variation": 0.0129999999999999
+      },
+      {
+        "id": "mrkyn26gobv77v",
+        "monthYear": "2012-07",
+        "value": 104.99672130029253,
+        "publicationDate": "2012-07-01",
+        "variation": 0.013100000000000112
+      },
+      {
+        "id": "mrkyn26g5pt5p7",
+        "monthYear": "2012-08",
+        "value": 105.88919343134502,
+        "publicationDate": "2012-08-01",
+        "variation": 0.008499999999999952
+      },
+      {
+        "id": "mrkyn26gc8awd9",
+        "monthYear": "2012-09",
+        "value": 106.22803885032533,
+        "publicationDate": "2012-09-01",
+        "variation": 0.0032000000000000917
+      },
+      {
+        "id": "mrkyn26ghclbse",
+        "monthYear": "2012-10",
+        "value": 106.45111773191101,
+        "publicationDate": "2012-10-01",
+        "variation": 0.0020999999999999908
+      },
+      {
+        "id": "mrkyn26g95qxoq",
+        "monthYear": "2012-11",
+        "value": 106.70660041446759,
+        "publicationDate": "2012-11-01",
+        "variation": 0.0023999999999999577
+      },
+      {
+        "id": "mrkyn26gl7a88y",
+        "monthYear": "2012-12",
+        "value": 106.95202559542086,
+        "publicationDate": "2012-12-01",
+        "variation": 0.0022999999999999687
+      },
+      {
+        "id": "mrkyn26gepehe3",
+        "monthYear": "2013-01",
+        "value": 107.26218646964757,
+        "publicationDate": "2013-01-01",
+        "variation": 0.0028999999999999027
+      },
+      {
+        "id": "mrkyn26g9ch5zg",
+        "monthYear": "2013-02",
+        "value": 107.6805089968792,
+        "publicationDate": "2013-02-01",
+        "variation": 0.0039000000000000146
+      },
+      {
+        "id": "mrkyn26gesh46q",
+        "monthYear": "2013-03",
+        "value": 108.54195306885423,
+        "publicationDate": "2013-03-01",
+        "variation": 0.008000000000000007
+      },
+      {
+        "id": "mrkyn26gdge9qw",
+        "monthYear": "2013-04",
+        "value": 108.84587053744701,
+        "publicationDate": "2013-04-01",
+        "variation": 0.0027999999999999137
+      },
+      {
+        "id": "mrkyn26gqa03pi",
+        "monthYear": "2013-05",
+        "value": 109.76017584996157,
+        "publicationDate": "2013-05-01",
+        "variation": 0.008399999999999963
+      },
+      {
+        "id": "mrkyn26groslgv",
+        "monthYear": "2013-06",
+        "value": 111.1212020305011,
+        "publicationDate": "2013-06-01",
+        "variation": 0.012399999999999967
+      },
+      {
+        "id": "mrkyn26gvgar8m",
+        "monthYear": "2013-07",
+        "value": 113.29917759029892,
+        "publicationDate": "2013-07-01",
+        "variation": 0.019600000000000062
+      },
+      {
+        "id": "mrkyn26gxvmeqo",
+        "monthYear": "2013-08",
+        "value": 114.12626158670811,
+        "publicationDate": "2013-08-01",
+        "variation": 0.007300000000000084
+      },
+      {
+        "id": "mrkyn26gdm6y6v",
+        "monthYear": "2013-09",
+        "value": 114.48005299762691,
+        "publicationDate": "2013-09-01",
+        "variation": 0.0031000000000001027
+      },
+      {
+        "id": "mrkyn26g0gmomg",
+        "monthYear": "2013-10",
+        "value": 114.9723172255167,
+        "publicationDate": "2013-10-01",
+        "variation": 0.0042999999999999705
+      },
+      {
+        "id": "mrkyn26ghd0at8",
+        "monthYear": "2013-11",
+        "value": 115.35172587236092,
+        "publicationDate": "2013-11-01",
+        "variation": 0.0033000000000000806
+      },
+      {
+        "id": "mrkyn26grcj3v1",
+        "monthYear": "2013-12",
+        "value": 115.66317553221629,
+        "publicationDate": "2013-12-01",
+        "variation": 0.0026999999999999247
+      },
+      {
+        "id": "mrkyn26gccmw4g",
+        "monthYear": "2014-01",
+        "value": 115.91763451838716,
+        "publicationDate": "2014-01-01",
+        "variation": 0.0021999999999999797
+      },
+      {
+        "id": "mrkyn26g3eck5g",
+        "monthYear": "2014-02",
+        "value": 116.72905796001587,
+        "publicationDate": "2014-02-01",
+        "variation": 0.006999999999999895
+      },
+      {
+        "id": "mrkyn26gbdhdz6",
+        "monthYear": "2014-03",
+        "value": 117.24266581503993,
+        "publicationDate": "2014-03-01",
+        "variation": 0.0043999999999999595
+      },
+      {
+        "id": "mrkyn26gdg5m4f",
+        "monthYear": "2014-04",
+        "value": 117.50059967983302,
+        "publicationDate": "2014-04-01",
+        "variation": 0.0021999999999999797
+      },
+      {
+        "id": "mrkyn26g0o84f4",
+        "monthYear": "2014-05",
+        "value": 118.2878536976879,
+        "publicationDate": "2014-05-01",
+        "variation": 0.006699999999999928
+      },
+      {
+        "id": "mrkyn26gz4bfez",
+        "monthYear": "2014-06",
+        "value": 119.90839729334623,
+        "publicationDate": "2014-06-01",
+        "variation": 0.013700000000000045
+      },
+      {
+        "id": "mrkyn26gfdbgih",
+        "monthYear": "2014-07",
+        "value": 121.40725225951304,
+        "publicationDate": "2014-07-01",
+        "variation": 0.012499999999999956
+      },
+      {
+        "id": "mrkyn26g2slhy8",
+        "monthYear": "2014-08",
+        "value": 122.37851027758914,
+        "publicationDate": "2014-08-01",
+        "variation": 0.008000000000000007
+      },
+      {
+        "id": "mrkyn26gl1qidz",
+        "monthYear": "2014-09",
+        "value": 122.61102944711656,
+        "publicationDate": "2014-09-01",
+        "variation": 0.0019000000000000128
+      },
+      {
+        "id": "mrkyn26g39dkab",
+        "monthYear": "2014-10",
+        "value": 122.80720709423196,
+        "publicationDate": "2014-10-01",
+        "variation": 0.0016000000000000458
+      },
+      {
+        "id": "mrkyn26gi64o5v",
+        "monthYear": "2014-11",
+        "value": 123.05282150842042,
+        "publicationDate": "2014-11-01",
+        "variation": 0.0020000000000000018
+      },
+      {
+        "id": "mrkyn26gn7q68u",
+        "monthYear": "2014-12",
+        "value": 123.42197997294566,
+        "publicationDate": "2014-12-01",
+        "variation": 0.0029999999999998916
+      },
+      {
+        "id": "mrkyn26gl2f04z",
+        "monthYear": "2015-01",
+        "value": 123.73053492287802,
+        "publicationDate": "2015-01-01",
+        "variation": 0.0024999999999999467
+      },
+      {
+        "id": "mrkyn26g5zxi93",
+        "monthYear": "2015-02",
+        "value": 124.59664866733816,
+        "publicationDate": "2015-02-01",
+        "variation": 0.006999999999999895
+      },
+      {
+        "id": "mrkyn26ggv7u56",
+        "monthYear": "2015-03",
+        "value": 125.21963191067483,
+        "publicationDate": "2015-03-01",
+        "variation": 0.004999999999999893
+      },
+      {
+        "id": "mrkyn26g4ka8u5",
+        "monthYear": "2015-04",
+        "value": 125.67042258555327,
+        "publicationDate": "2015-04-01",
+        "variation": 0.0036000000000000476
+      },
+      {
+        "id": "mrkyn26gf7kbmx",
+        "monthYear": "2015-05",
+        "value": 126.48728033235936,
+        "publicationDate": "2015-05-01",
+        "variation": 0.00649999999999995
+      },
+      {
+        "id": "mrkyn26gvym7fc",
+        "monthYear": "2015-06",
+        "value": 127.05647309385498,
+        "publicationDate": "2015-06-01",
+        "variation": 0.0044999999999999485
+      },
+      {
+        "id": "mrkyn26g2yitmm",
+        "monthYear": "2015-07",
+        "value": 129.43242914071007,
+        "publicationDate": "2015-07-01",
+        "variation": 0.01870000000000016
+      },
+      {
+        "id": "mrkyn26gitbbc8",
+        "monthYear": "2015-08",
+        "value": 130.28668317303874,
+        "publicationDate": "2015-08-01",
+        "variation": 0.006599999999999939
+      },
+      {
+        "id": "mrkyn26gtue4x9",
+        "monthYear": "2015-09",
+        "value": 131.32897663842306,
+        "publicationDate": "2015-09-01",
+        "variation": 0.008000000000000007
+      },
+      {
+        "id": "mrkyn26glahnr7",
+        "monthYear": "2015-10",
+        "value": 131.6179003870276,
+        "publicationDate": "2015-10-01",
+        "variation": 0.0021999999999999797
+      },
+      {
+        "id": "mrkyn26grrl30z",
+        "monthYear": "2015-11",
+        "value": 131.97326871807255,
+        "publicationDate": "2015-11-01",
+        "variation": 0.0026999999999999247
+      },
+      {
+        "id": "mrkyn26gqgp2rp",
+        "monthYear": "2015-12",
+        "value": 132.50116179294483,
+        "publicationDate": "2015-12-01",
+        "variation": 0.0040000000000000036
+      },
+      {
+        "id": "mrkyn26gao1n0c",
+        "monthYear": "2016-01",
+        "value": 132.66016318709637,
+        "publicationDate": "2016-01-01",
+        "variation": 0.0012000000000000899
+      },
+      {
+        "id": "mrkyn26gqoq0kn",
+        "monthYear": "2016-02",
+        "value": 133.08467570929508,
+        "publicationDate": "2016-02-01",
+        "variation": 0.0032000000000000917
+      },
+      {
+        "id": "mrkyn26gl6f9by",
+        "monthYear": "2016-03",
+        "value": 133.77671602298344,
+        "publicationDate": "2016-03-01",
+        "variation": 0.0052000000000000934
+      },
+      {
+        "id": "mrkyn26g0ivp8a",
+        "monthYear": "2016-04",
+        "value": 134.833552079565,
+        "publicationDate": "2016-04-01",
+        "variation": 0.007900000000000018
+      },
+      {
+        "id": "mrkyn26gtbo2cs",
+        "monthYear": "2016-05",
+        "value": 135.38636964309123,
+        "publicationDate": "2016-05-01",
+        "variation": 0.0040999999999999925
+      },
+      {
+        "id": "mrkyn26gxsowp8",
+        "monthYear": "2016-06",
+        "value": 135.64360374541312,
+        "publicationDate": "2016-06-01",
+        "variation": 0.0019000000000000128
+      },
+      {
+        "id": "mrkyn26gbhov6w",
+        "monthYear": "2016-07",
+        "value": 137.70538652234342,
+        "publicationDate": "2016-07-01",
+        "variation": 0.015200000000000102
+      },
+      {
+        "id": "mrkyn26gjx3bff",
+        "monthYear": "2016-08",
+        "value": 139.20637523543695,
+        "publicationDate": "2016-08-01",
+        "variation": 0.01089999999999991
+      },
+      {
+        "id": "mrkyn26g5rthke",
+        "monthYear": "2016-09",
+        "value": 139.56831181104909,
+        "publicationDate": "2016-09-01",
+        "variation": 0.0025999999999999357
+      },
+      {
+        "id": "mrkyn26gyf92ig",
+        "monthYear": "2016-10",
+        "value": 140.08471456474996,
+        "publicationDate": "2016-10-01",
+        "variation": 0.0037000000000000366
+      },
+      {
+        "id": "mrkyn26gg8ccab",
+        "monthYear": "2016-11",
+        "value": 140.32285857951004,
+        "publicationDate": "2016-11-01",
+        "variation": 0.0017000000000000348
+      },
+      {
+        "id": "mrkyn26gt3r3sc",
+        "monthYear": "2016-12",
+        "value": 140.5614074390952,
+        "publicationDate": "2016-12-01",
+        "variation": 0.0017000000000000348
+      },
+      {
+        "id": "mrkyn26gkeozcv",
+        "monthYear": "2017-01",
+        "value": 141.06742850587597,
+        "publicationDate": "2017-01-01",
+        "variation": 0.0036000000000000476
+      },
+      {
+        "id": "mrkyn26gpynd6m",
+        "monthYear": "2017-02",
+        "value": 141.47652404854298,
+        "publicationDate": "2017-02-01",
+        "variation": 0.0028999999999999027
+      },
+      {
+        "id": "mrkyn26gmxwlk2",
+        "monthYear": "2017-03",
+        "value": 142.22634962600029,
+        "publicationDate": "2017-03-01",
+        "variation": 0.005300000000000082
+      },
+      {
+        "id": "mrkyn26gzc8qg5",
+        "monthYear": "2017-04",
+        "value": 142.73836448465389,
+        "publicationDate": "2017-04-01",
+        "variation": 0.0036000000000000476
+      },
+      {
+        "id": "mrkyn26gvqu9cr",
+        "monthYear": "2017-05",
+        "value": 142.62417379306615,
+        "publicationDate": "2017-05-01",
+        "variation": -0.0008000000000001339
+      },
+      {
+        "id": "mrkyn26g1qahzj",
+        "monthYear": "2017-06",
+        "value": 142.80958521899714,
+        "publicationDate": "2017-06-01",
+        "variation": 0.0013000000000000789
+      },
+      {
+        "id": "mrkyn26g25bmlo",
+        "monthYear": "2017-07",
+        "value": 144.7517955779755,
+        "publicationDate": "2017-07-01",
+        "variation": 0.013600000000000056
+      },
+      {
+        "id": "mrkyn26gp5i4qm",
+        "monthYear": "2017-08",
+        "value": 145.07024952824705,
+        "publicationDate": "2017-08-01",
+        "variation": 0.0021999999999999797
+      },
+      {
+        "id": "mrkyn26gy7fb2j",
+        "monthYear": "2017-09",
+        "value": 145.65053052636003,
+        "publicationDate": "2017-09-01",
+        "variation": 0.0040000000000000036
+      },
+      {
+        "id": "mrkyn26gmd2dk8",
+        "monthYear": "2017-10",
+        "value": 145.85444126909695,
+        "publicationDate": "2017-10-01",
+        "variation": 0.0014000000000000679
+      },
+      {
+        "id": "mrkyn26gc2v23g",
+        "monthYear": "2017-11",
+        "value": 146.13156470750823,
+        "publicationDate": "2017-11-01",
+        "variation": 0.0019000000000000128
+      },
+      {
+        "id": "mrkyn26gjiqm9i",
+        "monthYear": "2017-12",
+        "value": 146.54073308868925,
+        "publicationDate": "2017-12-01",
+        "variation": 0.0027999999999999137
+      },
+      {
+        "id": "mrkyn26gh1vbua",
+        "monthYear": "2018-01",
+        "value": 146.74589011501342,
+        "publicationDate": "2018-01-01",
+        "variation": 0.0014000000000000679
+      },
+      {
+        "id": "mrkyn26giaxovg",
+        "monthYear": "2018-02",
+        "value": 147.15677860733544,
+        "publicationDate": "2018-02-01",
+        "variation": 0.0027999999999999137
+      },
+      {
+        "id": "mrkyn26gr1ooid",
+        "monthYear": "2018-03",
+        "value": 147.3627980973857,
+        "publicationDate": "2018-03-01",
+        "variation": 0.0014000000000000679
+      },
+      {
+        "id": "mrkyn26gftu3l2",
+        "monthYear": "2018-04",
+        "value": 147.70173253300968,
+        "publicationDate": "2018-04-01",
+        "variation": 0.0022999999999999687
+      },
+      {
+        "id": "mrkyn26gns3rt9",
+        "monthYear": "2018-05",
+        "value": 148.1152973841021,
+        "publicationDate": "2018-05-01",
+        "variation": 0.0027999999999999137
+      },
+      {
+        "id": "mrkyn26gbwvmtb",
+        "monthYear": "2018-06",
+        "value": 148.55964327625438,
+        "publicationDate": "2018-06-01",
+        "variation": 0.0029999999999998916
+      },
+      {
+        "id": "mrkyn26gcykl4l",
+        "monthYear": "2018-07",
+        "value": 149.68869656515392,
+        "publicationDate": "2018-07-01",
+        "variation": 0.007600000000000051
+      },
+      {
+        "id": "mrkyn26gcjwmfe",
+        "monthYear": "2018-08",
+        "value": 150.76645518042304,
+        "publicationDate": "2018-08-01",
+        "variation": 0.007200000000000095
+      },
+      {
+        "id": "mrkyn26gxuwxii",
+        "monthYear": "2018-09",
+        "value": 151.2187545459643,
+        "publicationDate": "2018-09-01",
+        "variation": 0.0029999999999998916
+      },
+      {
+        "id": "mrkyn26gu5s17o",
+        "monthYear": "2018-10",
+        "value": 151.47582642869244,
+        "publicationDate": "2018-10-01",
+        "variation": 0.0017000000000000348
+      },
+      {
+        "id": "mrkyn26gs4d8s6",
+        "monthYear": "2018-11",
+        "value": 151.97569665590714,
+        "publicationDate": "2018-11-01",
+        "variation": 0.0033000000000000806
+      },
+      {
+        "id": "mrkyn26g1uvze8",
+        "monthYear": "2018-12",
+        "value": 152.3708334672125,
+        "publicationDate": "2018-12-01",
+        "variation": 0.0025999999999999357
+      },
+      {
+        "id": "mrkyn26grbigu2",
+        "monthYear": "2019-01",
+        "value": 152.56891555071988,
+        "publicationDate": "2019-01-01",
+        "variation": 0.0013000000000000789
+      },
+      {
+        "id": "mrkyn26gqpgjvr",
+        "monthYear": "2019-02",
+        "value": 153.17919121292275,
+        "publicationDate": "2019-02-01",
+        "variation": 0.0040000000000000036
+      },
+      {
+        "id": "mrkyn26gnvhkaz",
+        "monthYear": "2019-03",
+        "value": 153.4702316762273,
+        "publicationDate": "2019-03-01",
+        "variation": 0.0019000000000000128
+      },
+      {
+        "id": "mrkyn26g0h80e5",
+        "monthYear": "2019-04",
+        "value": 153.76182511641215,
+        "publicationDate": "2019-04-01",
+        "variation": 0.0019000000000000128
+      },
+      {
+        "id": "mrkyn26gvyq4b0",
+        "monthYear": "2019-05",
+        "value": 154.51525805948256,
+        "publicationDate": "2019-05-01",
+        "variation": 0.004899999999999904
+      },
+      {
+        "id": "mrkyn26gagjgbz",
+        "monthYear": "2019-06",
+        "value": 154.6543217917361,
+        "publicationDate": "2019-06-01",
+        "variation": 0.0008999999999999009
+      },
+      {
+        "id": "mrkyn26g2ey48k",
+        "monthYear": "2019-07",
+        "value": 155.33480080761973,
+        "publicationDate": "2019-07-01",
+        "variation": 0.0043999999999999595
+      },
+      {
+        "id": "mrkyn26gjr55gs",
+        "monthYear": "2019-08",
+        "value": 156.7483474949691,
+        "publicationDate": "2019-08-01",
+        "variation": 0.009100000000000108
+      },
+      {
+        "id": "mrkyn26ggt4ewp",
+        "monthYear": "2019-09",
+        "value": 157.281291876452,
+        "publicationDate": "2019-09-01",
+        "variation": 0.0034000000000000696
+      },
+      {
+        "id": "mrkyn26gox6pwg",
+        "monthYear": "2019-10",
+        "value": 158.22497962771072,
+        "publicationDate": "2019-10-01",
+        "variation": 0.006000000000000005
+      },
+      {
+        "id": "mrkyn26geyvb7s",
+        "monthYear": "2019-11",
+        "value": 158.414849603264,
+        "publicationDate": "2019-11-01",
+        "variation": 0.0012000000000000899
+      },
+      {
+        "id": "mrkyn26gndu71c",
+        "monthYear": "2019-12",
+        "value": 158.65247187766892,
+        "publicationDate": "2019-12-01",
+        "variation": 0.0015000000000000568
+      },
+      {
+        "id": "mrkyn26g9wqlka",
+        "monthYear": "2020-01",
+        "value": 158.87458533829766,
+        "publicationDate": "2020-01-01",
+        "variation": 0.0014000000000000679
+      },
+      {
+        "id": "mrkyn26gqdct66",
+        "monthYear": "2020-02",
+        "value": 159.28765926017724,
+        "publicationDate": "2020-02-01",
+        "variation": 0.0025999999999999357
+      },
+      {
+        "id": "mrkyn26gypetpj",
+        "monthYear": "2020-03",
+        "value": 159.84516606758785,
+        "publicationDate": "2020-03-01",
+        "variation": 0.0035000000000000586
+      },
+      {
+        "id": "mrkyn26gbpbvw6",
+        "monthYear": "2020-04",
+        "value": 160.4525776986447,
+        "publicationDate": "2020-04-01",
+        "variation": 0.0038000000000000256
+      },
+      {
+        "id": "mrkyn26gegjamu",
+        "monthYear": "2020-05",
+        "value": 160.74139233850227,
+        "publicationDate": "2020-05-01",
+        "variation": 0.0018000000000000238
+      },
+      {
+        "id": "mrkyn26ghkvfjn",
+        "monthYear": "2020-06",
+        "value": 161.07894926241312,
+        "publicationDate": "2020-06-01",
+        "variation": 0.0020999999999999908
+      },
+      {
+        "id": "mrkyn26g69vpti",
+        "monthYear": "2020-07",
+        "value": 161.59440190005284,
+        "publicationDate": "2020-07-01",
+        "variation": 0.0032000000000000917
+      },
+      {
+        "id": "mrkyn26gyhjb48",
+        "monthYear": "2020-08",
+        "value": 162.95179487601328,
+        "publicationDate": "2020-08-01",
+        "variation": 0.008399999999999963
+      },
+      {
+        "id": "mrkyn26gll6123",
+        "monthYear": "2020-09",
+        "value": 164.28799959399657,
+        "publicationDate": "2020-09-01",
+        "variation": 0.008199999999999985
+      },
+      {
+        "id": "mrkyn26g1f77x6",
+        "monthYear": "2020-10",
+        "value": 166.17731158932756,
+        "publicationDate": "2020-10-01",
+        "variation": 0.011500000000000066
+      },
+      {
+        "id": "mrkyn26gz8jbqk",
+        "monthYear": "2020-11",
+        "value": 168.98570815518718,
+        "publicationDate": "2020-11-01",
+        "variation": 0.016899999999999915
+      },
+      {
+        "id": "mrkyn26gw17zb8",
+        "monthYear": "2020-12",
+        "value": 171.16562379038908,
+        "publicationDate": "2020-12-01",
+        "variation": 0.012899999999999912
+      },
+      {
+        "id": "mrkyn26gv3wure",
+        "monthYear": "2021-01",
+        "value": 172.6718812797445,
+        "publicationDate": "2021-01-01",
+        "variation": 0.008799999999999919
+      },
+      {
+        "id": "mrkyn26g3k3y3b",
+        "monthYear": "2021-02",
+        "value": 174.27772977564612,
+        "publicationDate": "2021-02-01",
+        "variation": 0.009300000000000086
+      },
+      {
+        "id": "mrkyn26gzihb1a",
+        "monthYear": "2021-03",
+        "value": 176.1425014842455,
+        "publicationDate": "2021-03-01",
+        "variation": 0.010699999999999932
+      },
+      {
+        "id": "mrkyn26g2drydg",
+        "monthYear": "2021-04",
+        "value": 179.66535151393043,
+        "publicationDate": "2021-04-01",
+        "variation": 0.020000000000000018
+      },
+      {
+        "id": "mrkyn26gnw7r1z",
+        "monthYear": "2021-05",
+        "value": 181.37217235331278,
+        "publicationDate": "2021-05-01",
+        "variation": 0.009500000000000064
+      },
+      {
+        "id": "mrkyn26g1u1rhi",
+        "monthYear": "2021-06",
+        "value": 184.6368714556724,
+        "publicationDate": "2021-06-01",
+        "variation": 0.018000000000000016
+      },
+      {
+        "id": "mrkyn26gzvx5pj",
+        "monthYear": "2021-07",
+        "value": 188.88351949915287,
+        "publicationDate": "2021-07-01",
+        "variation": 0.02299999999999991
+      },
+      {
+        "id": "mrkyn26g5u5ccn",
+        "monthYear": "2021-08",
+        "value": 191.22567514094237,
+        "publicationDate": "2021-08-01",
+        "variation": 0.012399999999999967
+      },
+      {
+        "id": "mrkyn26gl20j9i",
+        "monthYear": "2021-09",
+        "value": 192.29653892173167,
+        "publicationDate": "2021-09-01",
+        "variation": 0.005600000000000049
+      },
+      {
+        "id": "mrkyn26ge2jl75",
+        "monthYear": "2021-10",
+        "value": 193.37339953969337,
+        "publicationDate": "2021-10-01",
+        "variation": 0.005600000000000049
+      },
+      {
+        "id": "mrkyn26gfvyzyv",
+        "monthYear": "2021-11",
+        "value": 194.92038673601093,
+        "publicationDate": "2021-11-01",
+        "variation": 0.008000000000000007
+      },
+      {
+        "id": "mrkyn26g61z6o9",
+        "monthYear": "2021-12",
+        "value": 196.30432148183664,
+        "publicationDate": "2021-12-01",
+        "variation": 0.007100000000000106
+      },
+      {
+        "id": "mrkyn26g4eyd02",
+        "monthYear": "2022-01",
+        "value": 196.89323444628212,
+        "publicationDate": "2022-01-01",
+        "variation": 0.0029999999999998916
+      },
+      {
+        "id": "mrkyn26ghh1zyq",
+        "monthYear": "2022-02",
+        "value": 198.15335114673832,
+        "publicationDate": "2022-02-01",
+        "variation": 0.006399999999999961
+      },
+      {
+        "id": "mrkyn26ggxbmvw",
+        "monthYear": "2022-03",
+        "value": 199.10448723224263,
+        "publicationDate": "2022-03-01",
+        "variation": 0.0047999999999999154
+      },
+      {
+        "id": "mrkyn26gg358ug",
+        "monthYear": "2022-04",
+        "value": 200.557949989038,
+        "publicationDate": "2022-04-01",
+        "variation": 0.007300000000000084
+      },
+      {
+        "id": "mrkyn26gj1w8aw",
+        "monthYear": "2022-05",
+        "value": 202.30280415394262,
+        "publicationDate": "2022-05-01",
+        "variation": 0.00869999999999993
+      },
+      {
+        "id": "mrkyn26gtg01gn",
+        "monthYear": "2022-06",
+        "value": 205.31711593583634,
+        "publicationDate": "2022-06-01",
+        "variation": 0.014899999999999913
+      },
+      {
+        "id": "mrkyn26g6ez4iq",
+        "monthYear": "2022-07",
+        "value": 211.08652689363333,
+        "publicationDate": "2022-07-01",
+        "variation": 0.028100000000000014
+      },
+      {
+        "id": "mrkyn26gcoleci",
+        "monthYear": "2022-08",
+        "value": 213.5351306055995,
+        "publicationDate": "2022-08-01",
+        "variation": 0.011600000000000055
+      },
+      {
+        "id": "mrkyn26g0p6rgi",
+        "monthYear": "2022-09",
+        "value": 214.239796536598,
+        "publicationDate": "2022-09-01",
+        "variation": 0.0033000000000000806
+      },
+      {
+        "id": "mrkyn26gfduueu",
+        "monthYear": "2022-10",
+        "value": 214.45403633313455,
+        "publicationDate": "2022-10-01",
+        "variation": 0.0009999999999998899
+      },
+      {
+        "id": "mrkyn26gotpzjq",
+        "monthYear": "2022-11",
+        "value": 214.53981794766779,
+        "publicationDate": "2022-11-01",
+        "variation": 0.00039999999999995595
+      },
+      {
+        "id": "mrkyn26gh73rhr",
+        "monthYear": "2022-12",
+        "value": 214.84017369279454,
+        "publicationDate": "2022-12-01",
+        "variation": 0.0014000000000000679
+      },
+      {
+        "id": "mrkyn26grfcuus",
+        "monthYear": "2023-01",
+        "value": 215.42024216176506,
+        "publicationDate": "2023-01-01",
+        "variation": 0.0026999999999999247
+      },
+      {
+        "id": "mrkyn26ggxgblt",
+        "monthYear": "2023-02",
+        "value": 216.10958693668272,
+        "publicationDate": "2023-02-01",
+        "variation": 0.0032000000000000917
+      },
+      {
+        "id": "mrkyn26geo5te6",
+        "monthYear": "2023-03",
+        "value": 216.56341706924974,
+        "publicationDate": "2023-03-01",
+        "variation": 0.0020999999999999908
+      },
+      {
+        "id": "mrkyn26g3h0s5k",
+        "monthYear": "2023-04",
+        "value": 216.95323121997438,
+        "publicationDate": "2023-04-01",
+        "variation": 0.0018000000000000238
+      },
+      {
+        "id": "mrkyn26gfcs68o",
+        "monthYear": "2023-05",
+        "value": 217.45222365178032,
+        "publicationDate": "2023-05-01",
+        "variation": 0.0022999999999999687
+      },
+      {
+        "id": "mrkyn26g129e7s",
+        "monthYear": "2023-06",
+        "value": 218.32203254638745,
+        "publicationDate": "2023-06-01",
+        "variation": 0.0040000000000000036
+      },
+      {
+        "id": "mrkyn26g14ajdr",
+        "monthYear": "2023-07",
+        "value": 220.17776982303172,
+        "publicationDate": "2023-07-01",
+        "variation": 0.008499999999999952
+      },
+      {
+        "id": "mrkyn26goyk9e5",
+        "monthYear": "2023-08",
+        "value": 220.30987648492552,
+        "publicationDate": "2023-08-01",
+        "variation": 0.0005999999999999339
+      },
+      {
+        "id": "mrkyn26g38el2t",
+        "monthYear": "2023-09",
+        "value": 220.83862018848933,
+        "publicationDate": "2023-09-01",
+        "variation": 0.0023999999999999577
+      },
+      {
+        "id": "mrkyn26g30jkln",
+        "monthYear": "2023-10",
+        "value": 221.3686328769417,
+        "publicationDate": "2023-10-01",
+        "variation": 0.0023999999999999577
+      },
+      {
+        "id": "mrkyn26gofsud7",
+        "monthYear": "2023-11",
+        "value": 221.81137014269558,
+        "publicationDate": "2023-11-01",
+        "variation": 0.0020000000000000018
+      },
+      {
+        "id": "mrkyn26gegjlo2",
+        "monthYear": "2023-12",
+        "value": 222.03318151283824,
+        "publicationDate": "2023-12-01",
+        "variation": 0.0009999999999998899
+      },
+      {
+        "id": "mrkyn26g50ozi9",
+        "monthYear": "2024-01",
+        "value": 222.6104677847716,
+        "publicationDate": "2024-01-01",
+        "variation": 0.0025999999999999357
+      },
+      {
+        "id": "mrkyn26g1zz0go",
+        "monthYear": "2024-02",
+        "value": 223.12247186067657,
+        "publicationDate": "2024-02-01",
+        "variation": 0.0022999999999999687
+      },
+      {
+        "id": "mrkyn26ggoqsso",
+        "monthYear": "2024-03",
+        "value": 223.56871680439792,
+        "publicationDate": "2024-03-01",
+        "variation": 0.0020000000000000018
+      },
+      {
+        "id": "mrkyn26gn7t3ap",
+        "monthYear": "2024-04",
+        "value": 224.10528172472846,
+        "publicationDate": "2024-04-01",
+        "variation": 0.0023999999999999577
+      },
+      {
+        "id": "mrkyn26glgtqbi",
+        "monthYear": "2024-05",
+        "value": 225.02411337979984,
+        "publicationDate": "2024-05-01",
+        "variation": 0.0040999999999999925
+      },
+      {
+        "id": "mrkyn26gm74lfl",
+        "monthYear": "2024-06",
+        "value": 226.35175564874066,
+        "publicationDate": "2024-06-01",
+        "variation": 0.005900000000000016
+      },
+      {
+        "id": "mrkyn26glnmmj2",
+        "monthYear": "2024-07",
+        "value": 228.45682697627396,
+        "publicationDate": "2024-07-01",
+        "variation": 0.009300000000000086
+      },
+      {
+        "id": "mrkyn26gsmilam",
+        "monthYear": "2024-08",
+        "value": 230.03317908241021,
+        "publicationDate": "2024-08-01",
+        "variation": 0.006899999999999906
+      },
+      {
+        "id": "mrkyn26gwrwm8v",
+        "monthYear": "2024-09",
+        "value": 231.50539142853762,
+        "publicationDate": "2024-09-01",
+        "variation": 0.006399999999999961
+      },
+      {
+        "id": "mrkyn26g0akww3",
+        "monthYear": "2024-10",
+        "value": 232.9175743162517,
+        "publicationDate": "2024-10-01",
+        "variation": 0.006099999999999994
+      },
+      {
+        "id": "mrkyn26gd7yo2i",
+        "monthYear": "2024-11",
+        "value": 234.47812206417055,
+        "publicationDate": "2024-11-01",
+        "variation": 0.006699999999999928
+      },
+      {
+        "id": "mrkyn26gc2idqs",
+        "monthYear": "2024-12",
+        "value": 235.5098258012529,
+        "publicationDate": "2024-12-01",
+        "variation": 0.0043999999999999595
+      },
+      {
+        "id": "mrkyn26g1kgrjd",
+        "monthYear": "2025-01",
+        "value": 236.71092591283931,
+        "publicationDate": "2025-01-01",
+        "variation": 0.0051000000000001044
+      },
+      {
+        "id": "mrkyn26gqn8rxj",
+        "monthYear": "2025-02",
+        "value": 238.3915734868205,
+        "publicationDate": "2025-02-01",
+        "variation": 0.007100000000000106
+      },
+      {
+        "id": "mrkyn26g7sgc8x",
+        "monthYear": "2025-03",
+        "value": 239.29746146607042,
+        "publicationDate": "2025-03-26",
+        "variation": 0.0038000000000000256
+      },
+      {
+        "id": "mrkyn26gb5kur5",
+        "monthYear": "2025-03",
+        "value": 240.5178785195474,
+        "publicationDate": "2025-03-01",
+        "variation": 0.0051000000000001044
+      },
+      {
+        "id": "mrkyn26gooljno",
+        "monthYear": "2025-04",
+        "value": 241.93693400281273,
+        "publicationDate": "2025-04-25",
+        "variation": 0.005900000000000016
+      },
+      {
+        "id": "mrkyn26g0sg25q",
+        "monthYear": "2025-05",
+        "value": 242.56597003122002,
+        "publicationDate": "2025-05-27",
+        "variation": 0.0025999999999999357
+      },
+      {
+        "id": "mrkyn26g3q64np",
+        "monthYear": "2025-06",
+        "value": 244.89460334351975,
+        "publicationDate": "2025-06-25",
+        "variation": 0.009600000000000053
+      },
+      {
+        "id": "mrkyn26ga44nxe",
+        "monthYear": "2025-07",
+        "value": 247.1231442339458,
+        "publicationDate": "2025-07-28",
+        "variation": 0.009100000000000108
+      },
+      {
+        "id": "mrkyn26glhok2f",
+        "monthYear": "2025-08",
+        "value": 248.8530062435834,
+        "publicationDate": "2025-08-26",
+        "variation": 0.006999999999999895
+      },
+      {
+        "id": "mrkyn26gvncj2d",
+        "monthYear": "2025-09",
+        "value": 249.3755975566949,
+        "publicationDate": "2025-09-25",
+        "variation": 0.0020999999999999908
+      },
+      {
+        "id": "mrkyn26gudabf9",
+        "monthYear": "2025-10",
+        "value": 249.89928631156397,
+        "publicationDate": "2025-10-28",
+        "variation": 0.0020999999999999908
+      },
+      {
+        "id": "mrkyn26g3puy3n",
+        "monthYear": "2025-11",
+        "value": 250.59900431323632,
+        "publicationDate": "2025-11-25",
+        "variation": 0.0027999999999999137
+      },
+      {
+        "id": "mrkyn26g6us8q9",
+        "monthYear": "2025-12",
+        "value": 251.1252622222941,
+        "publicationDate": "2025-12-23",
+        "variation": 0.0020999999999999908
+      },
+      {
+        "id": "mrkyn26gq1c0n5",
+        "monthYear": "2026-01",
+        "value": 252.70735137429455,
+        "publicationDate": "2026-01-27",
+        "variation": 0.006299999999999972
+      },
+      {
+        "id": "mrkyn26gkj5vvl",
+        "monthYear": "2026-02",
+        "value": 253.56655636896716,
+        "publicationDate": "2026-02-26",
+        "variation": 0.0034000000000000696
+      },
+      {
+        "id": "mrkyn26gafd2jy",
+        "monthYear": "2026-03",
+        "value": 254.47939597189546,
+        "publicationDate": "2026-03-26",
+        "variation": 0.0036000000000000476
+      },
+      {
+        "id": "mrkyn26g0hkqgn",
+        "monthYear": "2026-04",
+        "value": 257.1259816900032,
+        "publicationDate": "2026-04-27",
+        "variation": 0.010399999999999965
+      },
+      {
+        "id": "mrkyn26g3upa0b",
+        "monthYear": "2026-05",
+        "value": 259.1058517490162,
+        "publicationDate": "2026-05-26",
+        "variation": 0.00770000000000004
+      },
+      {
+        "id": "mrkyn26gtffkyk",
+        "monthYear": "2026-06",
+        "value": 261.30825148888283,
+        "publicationDate": "2026-06-25",
+        "variation": 0.008499999999999952
       }
     ]
   }
